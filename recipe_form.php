@@ -75,7 +75,7 @@ ORDER BY
 <?php
   for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
     $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    array_push($foodstuff_array, $raws);
+    array_push($foodstuff_array, $rows);
   }
   for ($i = 0; $i < count($foodstuff_array); $i++) {
     $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
