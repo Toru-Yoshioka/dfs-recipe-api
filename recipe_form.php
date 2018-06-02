@@ -14,12 +14,12 @@ if (!$link) {
 ?>
     <h3>DFS レシピ 登録フォーム</h3>
     <form>
-      <h2>レシピ名</h2>
+      <h4>レシピ名</h4>
       英名：<br/>
       <input type="text" name="RECIPE_NAME_EN" size="64"/><br/>
       和名：(任意)<br/>
       <input type="text" name="RECIPE_NAME_JP" size="64"/><br/>      
-      <h2>調理器具：</h2>
+      <h4>調理器具：</h4>
 <?php
   // 調理機器一覧取得
   $cookwares_result = pg_query('
@@ -52,12 +52,12 @@ ORDER BY
   }
 ?>
       </select>
-      <h2>スロット - 材料</h2>
+      <h4>スロット - 材料</h4>
 <?php
   // 食材一覧取得
   $foodstuff_result = pg_query('
 SELECT
- dfm.foodstuff_seq
+ dfm.foodstuff_seq,
  dfm.foodstuff_name_en,
  dfm.foodstuff_name_jp
 FROM
