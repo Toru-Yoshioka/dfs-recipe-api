@@ -37,7 +37,7 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
-      <select name="COOKWARE">
+      <select name="COOKING_EQUIPMENT_SEQ">
         <option value="">選択してください</option>
 <?php
   for ($i = 0 ; $i < pg_num_rows($cookwares_result) ; $i++){
@@ -70,7 +70,7 @@ ORDER BY
   }
 ?>
       SLOT (1) - 
-      <select name="SLOT01">
+      <select name="FOODSTUFF_SEQ_SLOT01">
         <option value="">選択してください</option>
 <?php
   $option_tag = '';
@@ -83,53 +83,64 @@ ORDER BY
       </select>
       <br/>
       SLOT (2) - 
-      <select name="SLOT02">
+      <select name="FOODSTUFF_SEQ_SLOT02">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (3) - 
-      <select name="SLOT03">
+      <select name="FOODSTUFF_SEQ_SLOT03">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (4) - 
-      <select name="SLOT04">
+      <select name="FOODSTUFF_SEQ_SLOT04">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (5) - 
-      <select name="SLOT05">
+      <select name="FOODSTUFF_SEQ_SLOT05">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (6) - 
-      <select name="SLOT06">
+      <select name="FOODSTUFF_SEQ_SLOT06">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (7) - 
-      <select name="SLOT07">
+      <select name="FOODSTUFF_SEQ_SLOT07">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (8) - 
-      <select name="SLOT08">
+      <select name="FOODSTUFF_SEQ_SLOT08">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (9) - 
-      <select name="SLOT09">
+      <select name="FOODSTUFF_SEQ_SLOT09">
         <option value="">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
+      <h4>調理時間(秒)</h4>
+      <input type="time" name="COOKING_TIME_SECONDS" step="1" value="00:01:00"/><br/>
+      <br/>
+      <h4>成果物の使用可能回数</h4>
+      <input type="text" name="DELIVERABLE_USES" size="8" value="1"/><br/>
+      <br/>
+      <h4>成果物のエネルギー量</h4>
+      <input type="text" name="DELIVERABLE_ENERGY" size="8" value="4"/><br/>
+      <br/>
+      <h4>調理により得られる経験値</h4>
+      <input type="text" name="EXPERIENCE_POINT" size="8" value="1"/><br/>
       <br/>
       <input type="submit" value="　登　録　"/>
     </form>
