@@ -1,8 +1,49 @@
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>DFS Recipe Input Form</title>
  </head>
  <body>
  <?php echo '<p>Hello World</p>'; ?> 
+<?php
+date_default_timezone_set('Asia/Tokyo');
+$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$link = pg_connect($conn);
+if (!$link) {
+  die('接続失敗です。'.pg_last_error());
+}
+// 接続に成功
+// 調理機器一覧取得
+$cookwares_result = pg_query('
+SELECT
+ dcm.cookware_seq,
+ dcm.cookware_nam_en,
+ dcm.cookware_nam_jp,
+ dcm.dfs_site_key,
+FROM
+ dfs_cookware_mst dcm
+ORDER BY
+ dcm.cookware_seq DESC
+');
+if (!$cookwares_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+?>
+  <form>
+    <select name="COOKWARE">
+      <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($cookwares_result) ; $i++){
+    $rows = pg_fetch_array($cookwares_result, NULL, PGSQL_ASSOC);
+    $cookware_seq = $rows['cookware_seq'];
+    $cookware_name_en = $rows['cookware_name_en'];
+    $cookware_name_jp = $rows['cookware_name_jp'];
+    $dfs_site_key = $rows['dfs_site_key'];
+?>
+    <option value="<?php print($cookware_seq); ?>"><?php print($cookware_name_en); ?></option>
+<?php
+  }
+?>
+    </select>
+  </form>
  </body>
 </html>
