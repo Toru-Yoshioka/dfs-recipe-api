@@ -84,6 +84,7 @@ ORDER BY
   }
 ?>
       </select>
+      <br/>
       SLOT (2) - 
       <select name="SLOT02">
         <option value="">選択してください</option>
@@ -99,6 +100,121 @@ ORDER BY
   }
 ?>
       </select>
+      <br/>
+      SLOT (3) - 
+      <select name="SLOT03">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (4) - 
+      <select name="SLOT04">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (5) - 
+      <select name="SLOT05">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (6) - 
+      <select name="SLOT06">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (7) - 
+      <select name="SLOT07">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (8) - 
+      <select name="SLOT08">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      SLOT (9) - 
+      <select name="SLOT09">
+        <option value="">選択してください</option>
+<?php
+  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
+    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
+    $foodstuff_seq = $rows['foodstuff_seq'];
+    $foodstuff_name_en = $rows['foodstuff_name_en'];
+    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+?>
+        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
+<?php
+  }
+?>
+      </select>
+      <br/>
+      <br/>
+      <input type="submit" value="　登　録　"/>
     </form>
   </body>
 </html>
