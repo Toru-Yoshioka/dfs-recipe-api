@@ -13,10 +13,10 @@ if (!$link) {
 // 接続に成功
 
 // フォーム内容取得
-$foodstuff_name_en = $_GET['FOODSTUFF_NAME_EN'];
-$foodstuff_name_jp = $_GET['FOODSTUFF_NAME_JP'];
-$foodstuff_uses = $_GET['FOODSTUFF_USES'];
-$foodstuff_ep = $_GET['FOODSTUFF_EP'];
+$foodstuff_name_en = $_POST['FOODSTUFF_NAME_EN'];
+$foodstuff_name_jp = $_POST['FOODSTUFF_NAME_JP'];
+$foodstuff_uses = $_POST['FOODSTUFF_USES'];
+$foodstuff_ep = $_POST['FOODSTUFF_EP'];
 
 // $result = pg_query('
 // INSERT INTO
