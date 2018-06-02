@@ -13,7 +13,7 @@ if (!$link) {
 // 接続に成功
 ?>
     <h3>DFS レシピ 登録フォーム</h3>
-    <form>
+    <form method="post" action="./recipe_regist.php">
       <h4>レシピ名</h4>
       英名：<br/>
       <input type="text" name="RECIPE_NAME_EN" size="64"/><br/>

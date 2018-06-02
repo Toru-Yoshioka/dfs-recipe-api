@@ -113,7 +113,7 @@ if (!$result) {
       <?php print($experience_point); ?><br/>
       <br/>
       <br/>
-      <a href="./foodstuff_form.php">登録フォームへ戻る</a>
+      <a href="./recipe_form.php">登録フォームへ戻る</a>
 <?php
   $close_flag = pg_close($link);
   if ($close_flag){
