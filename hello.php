@@ -6,7 +6,7 @@
  <?php echo '<p>Hello World</p>'; ?> 
 <?php
 date_default_timezone_set('Asia/Tokyo');
-$conn = "host=ec2-23-23-199-72.compute-1.amazonaws.com dbname=d25481250mtets user=mtrdhlivfehdrj password=lhXZgchb6JgtNPmToWmF3yaZlh";
+$conn = "host=ec2-23-23-248-192.compute-1.amazonaws.com dbname=dl8app8ukml19 user=zukuhaourmbbsk password=f9e66d533b3f6cdae3d67c88e7baac7bc05f380fcaf047471e726d3b332ef74a";
 $link = pg_connect($conn);
 if (!$link) {
   die('接続失敗です。'.pg_last_error());
