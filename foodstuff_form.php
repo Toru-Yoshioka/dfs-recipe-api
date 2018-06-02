@@ -4,7 +4,7 @@
   </head>
   <body>
     <h3>DFS 食材 登録フォーム</h3>
-    <form method="post" action="">
+    <form method="post" action="./foodstuff_regist.php">
       <h4>食材名</h4>
       英名：<br/>
       <input type="text" name="FOODSTUFF_NAME_EN" size="64"/><br/>
