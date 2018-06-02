@@ -18,30 +18,30 @@ $foodstuff_name_jp = $_GET['FOODSTUFF_NAME_JP'];
 $foodstuff_uses = $_GET['FOODSTUFF_USES'];
 $foodstuff_ep = $_GET['FOODSTUFF_EP'];
 
-$result = pg_query('
-INSERT INTO
-  dfs_foodstuff_mst
-  (
-    foodstuff_seq,
-	foodstuff_name_en,
-	foodstuff_name_jp,
-	foodstuff_uses,
-	foodstuff_energy,
-	update_date,
-	regist_date
- ) VALUES (
-  nextval(\'dfs_foodstuff_seq\'),
-  \'' . $foodstuff_name_en . '\',
-  \'' . $foodstuff_name_jp . '\',
-  ' . $foodstuff_uses . ',
-  ' . $foodstuff_ep . ',
-  current_timestamp,
-  current_timestamp
- )
-');
-if (!$result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-}
+// $result = pg_query('
+// INSERT INTO
+//   dfs_foodstuff_mst
+//   (
+//     foodstuff_seq,
+// 	foodstuff_name_en,
+// 	foodstuff_name_jp,
+// 	foodstuff_uses,
+// 	foodstuff_energy,
+// 	update_date,
+// 	regist_date
+//   ) VALUES (
+//   nextval(\'dfs_foodstuff_seq\'),
+//   \'' . $foodstuff_name_en . '\',
+//   \'' . $foodstuff_name_jp . '\',
+//   ' . $foodstuff_uses . ',
+//   ' . $foodstuff_ep . ',
+//   current_timestamp,
+//   current_timestamp
+//  )
+// ');
+// if (!$result) {
+//     die('クエリーが失敗しました。'.pg_last_error());
+// }
 ?>
     <h3>DFS 食材 登録フォーム 登録完了</h3>
       <h4>食材名</h4>
