@@ -216,5 +216,11 @@ ORDER BY
       <br/>
       <input type="submit" value="　登　録　"/>
     </form>
+<?php
+  $close_flag = pg_close($link);
+  if ($close_flag){
+    //     print('切断に成功しました。<br>');
+  }
+?>
   </body>
 </html>
