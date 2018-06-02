@@ -75,9 +75,12 @@ ORDER BY
 <?php
   for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
     $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+    array_push($foodstuff_array, $raws);
+  }
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -89,11 +92,10 @@ ORDER BY
       <select name="SLOT02">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -105,11 +107,10 @@ ORDER BY
       <select name="SLOT03">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -121,11 +122,10 @@ ORDER BY
       <select name="SLOT04">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -137,11 +137,10 @@ ORDER BY
       <select name="SLOT05">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -153,11 +152,10 @@ ORDER BY
       <select name="SLOT06">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -169,11 +167,10 @@ ORDER BY
       <select name="SLOT07">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -185,11 +182,10 @@ ORDER BY
       <select name="SLOT08">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
@@ -201,11 +197,10 @@ ORDER BY
       <select name="SLOT09">
         <option value="">選択してください</option>
 <?php
-  for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
-    $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    $foodstuff_seq = $rows['foodstuff_seq'];
-    $foodstuff_name_en = $rows['foodstuff_name_en'];
-    $foodstuff_name_jp = $rows['foodstuff_name_jp'];
+  for ($i = 0; $i < count($foodstuff_array); $i++) {
+    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
+    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
+    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
 ?>
         <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
 <?php
