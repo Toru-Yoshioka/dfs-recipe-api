@@ -22,7 +22,7 @@ SELECT
 FROM
  dfs_cookware_mst dcm
 ORDER BY
- dcm.cookware_seq DESC
+ dcm.cookware_seq ASC
 ');
 if (!$cookwares_result) {
   die('クエリーが失敗しました。'.pg_last_error());
