@@ -16,8 +16,8 @@ if (!$link) {
 $cookwares_result = pg_query('
 SELECT
  dcm.cookware_seq,
- dcm.cookware_nam_en,
- dcm.cookware_nam_jp,
+ dcm.cookware_name_en,
+ dcm.cookware_name_jp,
  dcm.dfs_site_key
 FROM
  dfs_cookware_mst dcm
