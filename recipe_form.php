@@ -73,139 +73,61 @@ ORDER BY
       <select name="SLOT01">
         <option value="">選択してください</option>
 <?php
+  $option_tag = '';
   for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
     $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
-    array_push($foodstuff_array, $rows);
-  }
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
+	$option_tag = $option_tag . '<option value="' . $rows['foodstuff_seq'] . '">' . $rows['foodstuff_name_en'] . '</option>';
   }
 ?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (2) - 
       <select name="SLOT02">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (3) - 
       <select name="SLOT03">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (4) - 
       <select name="SLOT04">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (5) - 
       <select name="SLOT05">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (6) - 
       <select name="SLOT06">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (7) - 
       <select name="SLOT07">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (8) - 
       <select name="SLOT08">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (9) - 
       <select name="SLOT09">
         <option value="">選択してください</option>
-<?php
-  for ($i = 0; $i < count($foodstuff_array); $i++) {
-    $foodstuff_seq = $foodstuff_array[$i]['foodstuff_seq'];
-    $foodstuff_name_en = $foodstuff_array[$i]['foodstuff_name_en'];
-    $foodstuff_name_jp = $foodstuff_array[$i]['foodstuff_name_jp'];	
-?>
-        <option value="<?php print($foodstuff_seq); ?>"><?php print($foodstuff_name_en); ?></option>
-<?php
-  }
-?>
+        <?php print($option_tag); ?>
       </select>
       <br/>
       <br/>
