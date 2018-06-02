@@ -18,7 +18,7 @@ SELECT
  dcm.cookware_seq,
  dcm.cookware_nam_en,
  dcm.cookware_nam_jp,
- dcm.dfs_site_key,
+ dcm.dfs_site_key
 FROM
  dfs_cookware_mst dcm
 ORDER BY
