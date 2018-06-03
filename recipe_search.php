@@ -195,7 +195,7 @@ ORDER BY
     $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
 ?>
       <label name="<?php print($rows['foodstuff_seq']); ?>">
-        <input type="checkbox" name="foodstuff_items" value="<?php print($rows['foodstuff_seq']); ?>"/>
+        <input type="checkbox" name="foodstuff_items[]" value="<?php print($rows['foodstuff_seq']); ?>"/>
         <?php print($rows['foodstuff_name_en']); ?>&nbsp;&nbsp;
       </label>
 <?php
