@@ -33,16 +33,14 @@ if (!$link) {
     <h3>DFS レシピ 検索フォーム</h3>
 <?php
   // 検索キーワード(食材Seq)取得
-  $foodstuff_items = array();
   $foodstuff_items = $_POST['foodstuff_items'];
+  $items_count = count($foodstuff_items);
   // if (is_array($foodstuff_items)) {
-    foreach ($foodstuff_items as $key => $value) {
+  //  foreach ($foodstuff_items as $key => $value) {
 ?>
-  <p>キー : <?php print($key); ?><br/>
-     値 : <?php print($value); ?><br/>
-  </p>
+  <p>個数: <?php print($items_count); ?></p>
 <?php
-    }
+  //  }
   // }
   // レシピ一覧取得
   $recipe_result = pg_query('
