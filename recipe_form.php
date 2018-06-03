@@ -63,7 +63,7 @@ SELECT
 FROM
  dfs_foodstuff_mst dfm
 ORDER BY
- dfm.foodstuff_seq ASC
+ dfm.foodstuff_en DESC
 ');
   if (!$foodstuff_result) {
     die('クエリーが失敗しました。'.pg_last_error());
