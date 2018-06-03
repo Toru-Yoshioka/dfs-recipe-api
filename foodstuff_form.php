@@ -6,9 +6,11 @@
       border: #aaaaaa 2px solid;
     }
     .border_inside th {
+      border-collapse: collapse;
       border: #cccccc 1px solid;
     }
     .border_inside td {
+      border-collapse: collapse;
       border: #cccccc 1px solid;
     }
     </style>
