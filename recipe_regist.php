@@ -27,10 +27,29 @@ $foodstuff_seq_slot07 = $_POST['FOODSTUFF_SEQ_SLOT07'];
 $foodstuff_seq_slot08 = $_POST['FOODSTUFF_SEQ_SLOT08'];
 $foodstuff_seq_slot09 = $_POST['FOODSTUFF_SEQ_SLOT09'];
 $cooking_time_seconds = $_POST['COOKING_TIME_SECONDS'];
+// 登録する調理時間(秒)を計算
+  if (strlen($cooking_time_seconds) <= 5) {
+    $cooking_time_seconds = $cooking_time_seconds . ":00";
+  }
+  $datetime1 = strtotime('2018-01-01 00:00:00');
+  $datetime2 = strtotime('2018-01-01 ' . $cooking_time_seconds);
+  $formated_seconds = $datetime2 - $datetime1;
+  //***************************************
+  // 日時の差を計算
+  //***************************************
+  function time_diff($time_from, $time_to) 
+  {
+    // 日時差を秒数で取得
+    $dif = $time_to - $time_from;
+    // 時間単位の差
+    $dif_time = date("H:i:s", $dif);
+    // 日付単位の差
+    $dif_days = (strtotime(date("Y-m-d", $dif)) - strtotime("1970-01-01")) / 86400;
+    return "{$dif_days}days {$dif_time}";
+  }
 $deliverable_uses = $_POST['DELIVERABLE_USES'];
 $deliverable_energy = $_POST['DELIVERABLE_ENERGY'];
 $experience_point = $_POST['EXPERIENCE_POINT'];
-/*
 $result = pg_query('
 INSERT INTO
   dfs_recipe_mst
@@ -68,7 +87,7 @@ INSERT INTO
   ' . $foodstuff_seq_slot07 . ',
   ' . $foodstuff_seq_slot08 . ',
   ' . $foodstuff_seq_slot09 . ',
-  ' . $cooking_time_seconds . ',
+  ' . $formated_seconds . ',
   ' . $deliverable_uses . ',
   ' . $deliverable_energy . ',
   ' . $experience_point . ',
@@ -79,7 +98,6 @@ INSERT INTO
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
-*/
 ?>
     <h3>DFS レシピ 登録完了</h3>
     <form>
@@ -101,27 +119,6 @@ if (!$result) {
       SLOT (8) - <?php print($foodstuff_seq_slot08); ?><br/>
       SLOT (9) - <?php print($foodstuff_seq_slot09); ?><br/>
       <h4>調理時間(秒)</h4>
-<?php
-  if (strlen($cooking_time_seconds) <= 5) {
-    $cooking_time_seconds = $cooking_time_seconds . ":00";
-  }
-  $datetime1 = strtotime('2018-01-01 00:00:00');
-  $datetime2 = strtotime('2018-01-01 ' . $cooking_time_seconds);
-  $formated_seconds = $datetime2 - $datetime1;
-  //***************************************
-  // 日時の差を計算
-  //***************************************
-  function time_diff($time_from, $time_to) 
-  {
-    // 日時差を秒数で取得
-    $dif = $time_to - $time_from;
-    // 時間単位の差
-    $dif_time = date("H:i:s", $dif);
-    // 日付単位の差
-    $dif_days = (strtotime(date("Y-m-d", $dif)) - strtotime("1970-01-01")) / 86400;
-    return "{$dif_days}days {$dif_time}";
-  }
-?>
       <?php print((string)$formated_seconds); ?><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>

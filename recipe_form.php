@@ -71,7 +71,7 @@ ORDER BY
 ?>
       SLOT (1) - 
       <select name="FOODSTUFF_SEQ_SLOT01">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
 <?php
   $option_tag = '';
   for ($i = 0 ; $i < pg_num_rows($foodstuff_result) ; $i++){
@@ -84,49 +84,49 @@ ORDER BY
       <br/>
       SLOT (2) - 
       <select name="FOODSTUFF_SEQ_SLOT02">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (3) - 
       <select name="FOODSTUFF_SEQ_SLOT03">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (4) - 
       <select name="FOODSTUFF_SEQ_SLOT04">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (5) - 
       <select name="FOODSTUFF_SEQ_SLOT05">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (6) - 
       <select name="FOODSTUFF_SEQ_SLOT06">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (7) - 
       <select name="FOODSTUFF_SEQ_SLOT07">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (8) - 
       <select name="FOODSTUFF_SEQ_SLOT08">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
       SLOT (9) - 
       <select name="FOODSTUFF_SEQ_SLOT09">
-        <option value="">選択してください</option>
+        <option value="0">選択してください</option>
         <?php print($option_tag); ?>
       </select>
       <br/>
