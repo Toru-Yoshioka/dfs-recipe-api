@@ -96,7 +96,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -116,7 +116,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -136,7 +136,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -156,7 +156,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -176,7 +176,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -196,7 +196,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -216,7 +216,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -236,7 +236,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
@@ -256,7 +256,7 @@ INSERT INTO
   dfs_recipe_foodstuff_join
   (
 	recipe_seq,
-	slot_on,
+	slot_no,
 	foodstuff_seq,
 	update_date,
 	regist_date
