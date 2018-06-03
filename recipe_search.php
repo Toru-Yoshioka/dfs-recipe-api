@@ -34,7 +34,7 @@ if (!$link) {
 <?php
   // 検索キーワード(食材Seq)取得
   $foodstuff_items = $_POST['foodstuff_items'];
-  if (is_array($foodstuff_items)) {
+  // if (is_array($foodstuff_items)) {
     foreach ($foodstuff_items as $key => $value) {
 ?>
   <p>キー : <?php print($key); ?><br/>
@@ -42,7 +42,7 @@ if (!$link) {
   </p>
 <?php
     }
-  }
+  // }
   // レシピ一覧取得
   $recipe_result = pg_query('
 SELECT
