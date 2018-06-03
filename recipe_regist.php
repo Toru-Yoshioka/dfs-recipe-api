@@ -105,12 +105,23 @@ if (!$result) {
   if (strlen($cooking_time_seconds) <= 5) {
     $cooking_time_seconds = $cooking_time_seconds . ":00";
   }
-  $datetime1 = new DateTime('2018-01-01 00:00:00');
-  $datetime2 = new DateTime('2018-01-01 ' . $cooking_time_seconds);
-  $interval = $datetime1->diff($datetime2);
-  $formated_seconds = $interval->format('%s');
+  $datetime1 = strtotime('2018-01-01 00:00:00');
+  $datetime2 = strtotime('2018-01-01 ' . $cooking_time_seconds);
+  $formated_seconds = time_diff($datetime1, $datetime2);
+  //***************************************
+  // 日時の差を計算
+  //***************************************
+  function time_diff($time_from, $time_to) 
+  {
+    // 日時差を秒数で取得
+    $dif = $time_to - $time_from;
+    // 時間単位の差
+    $dif_time = date("H:i:s", $dif);
+    // 日付単位の差
+    $dif_days = (strtotime(date("Y-m-d", $dif)) - strtotime("1970-01-01")) / 86400;
+    return "{$dif_days}days {$dif_time}";
+  }
 ?>
-      INTERVAL:<?php print((string)$interval); ?><br/>
       FORMAT:<?php print($cooking_time_seconds); ?><br/>
       <?php print((string)$formated_seconds); ?><br/>
       <br/>
