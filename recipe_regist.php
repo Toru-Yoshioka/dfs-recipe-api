@@ -110,9 +110,9 @@ if (!$result) {
   $interval = $datetime1->diff($datetime2);
   $formated_seconds = $interval->format('%s');
 ?>
-      INTERVAL:<?php print($interval); ?><br/>
+      INTERVAL:<?php print((string)$interval); ?><br/>
       FORMAT:<?php print($cooking_time_seconds); ?><br/>
-      <?php print($formated_seconds); ?><br/>
+      <?php print((string)$formated_seconds); ?><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>
       <?php print($deliverable_uses); ?><br/>
