@@ -33,6 +33,7 @@ if (!$link) {
     <h3>DFS レシピ 検索フォーム</h3>
 <?php
   // 検索キーワード(食材Seq)取得
+  $foodstuff_items = array();
   $foodstuff_items = $_POST['foodstuff_items'];
   // if (is_array($foodstuff_items)) {
     foreach ($foodstuff_items as $key => $value) {
