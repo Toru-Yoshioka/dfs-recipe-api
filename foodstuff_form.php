@@ -4,14 +4,15 @@
     <style type="text/css">
     .border_outside {
       border: #aaaaaa 2px solid;
+      border-collapse: collapse;
     }
     .border_inside th {
-      border-collapse: collapse;
       border: #cccccc 1px solid;
+      border-collapse: collapse;
     }
     .border_inside td {
-      border-collapse: collapse;
       border: #cccccc 1px solid;
+      border-collapse: collapse;
     }
     </style>
   </head>
