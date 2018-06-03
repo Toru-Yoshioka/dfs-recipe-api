@@ -107,7 +107,7 @@ if (!$result) {
   }
   $datetime1 = strtotime('2018-01-01 00:00:00');
   $datetime2 = strtotime('2018-01-01 ' . $cooking_time_seconds);
-  $formated_seconds = time_diff($datetime1, $datetime2);
+  $formated_seconds = $datetime2 - $datetime1;
   //***************************************
   // 日時の差を計算
   //***************************************
@@ -122,7 +122,6 @@ if (!$result) {
     return "{$dif_days}days {$dif_time}";
   }
 ?>
-      FORMAT:<?php print($cooking_time_seconds); ?><br/>
       <?php print((string)$formated_seconds); ?><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>
