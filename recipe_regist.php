@@ -106,13 +106,12 @@ if (!$result) {
     $cooking_time_seconds = $cooking_time_seconds . ":00";
   }
   $datetime1 = new DateTime('2018-01-01 00:00:00');
-  echo "DEBUG01:" . $datetime1;
   $datetime2 = new DateTime('2018-01-01 ' . $cooking_time_seconds);
-  echo "DEBUG02:" . $datetime2;
   $interval = $datetime1->diff($datetime2);
-  echo "DEBUG03:" . $interval;
   $formated_seconds = $interval->format('%s');
 ?>
+      INTERVAL:<?php print($interval); ?><br/>
+      FORMAT:<?php print($cooking_time_seconds); ?><br/>
       <?php print($formated_seconds); ?><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>
