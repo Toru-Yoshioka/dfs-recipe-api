@@ -36,7 +36,7 @@ if (!$link) {
   $target_recipe_seq_keys = "";
   $foodstuff_items = $_POST['FOODSTUFF_ITEMS'];
   if (is_array($foodstuff_items)) {
-    if ($_POST[foodstuff_items'SEARCH_TYPE'] === '0') {
+    if ($_POST['SEARCH_TYPE'] === '0') {
       // あいまい検索
       $search_keys = implode(',', $foodstuff_items);
       // あいまい検索レシピSeq取得
