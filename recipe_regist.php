@@ -50,6 +50,16 @@ $cooking_time_seconds = $_POST['COOKING_TIME_SECONDS'];
 $deliverable_uses = $_POST['DELIVERABLE_USES'];
 $deliverable_energy = $_POST['DELIVERABLE_ENERGY'];
 $experience_point = $_POST['EXPERIENCE_POINT'];
+// レシピシーケンス取得
+$recipe_seq_result = pg_query('
+SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
+');
+if (!$recipe_seq_result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
+$next_recipe_seq = $rows['next_recipe_seq'];
+// レシピマスタ登録
 $result = pg_query('
 INSERT INTO
   dfs_recipe_mst
@@ -58,15 +68,6 @@ INSERT INTO
 	recipe_name_en,
 	recipe_name_jp,
 	cooking_equipment_seq,
-	foodstuff_seq_slot01,
-	foodstuff_seq_slot02,
-	foodstuff_seq_slot03,
-	foodstuff_seq_slot04,
-	foodstuff_seq_slot05,
-	foodstuff_seq_slot06,
-	foodstuff_seq_slot07,
-	foodstuff_seq_slot08,
-	foodstuff_seq_slot09,
 	cooking_time_seconds,
 	deliverable_uses,
 	deliverable_energy,
@@ -74,23 +75,195 @@ INSERT INTO
 	update_date,
 	regist_date
   ) VALUES (
-  nextval(\'dfs_recipe_seq\'),
+  ' . $next_recipe_seq . ',
   \'' . $recipe_name_en . '\',
   \'' . $recipe_name_jp . '\',
   ' . $cooking_equipment_seq . ',
-  ' . $foodstuff_seq_slot01 . ',
-  ' . $foodstuff_seq_slot02 . ',
-  ' . $foodstuff_seq_slot03 . ',
-  ' . $foodstuff_seq_slot04 . ',
-  ' . $foodstuff_seq_slot05 . ',
-  ' . $foodstuff_seq_slot06 . ',
-  ' . $foodstuff_seq_slot07 . ',
-  ' . $foodstuff_seq_slot08 . ',
-  ' . $foodstuff_seq_slot09 . ',
   ' . $formated_seconds . ',
   ' . $deliverable_uses . ',
   ' . $deliverable_energy . ',
   ' . $experience_point . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+// 食材紐づけ登録
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  1,
+  ' . $foodstuff_seq_slot01 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  2,
+  ' . $foodstuff_seq_slot02 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  3,
+  ' . $foodstuff_seq_slot03 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  4,
+  ' . $foodstuff_seq_slot04 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  5,
+  ' . $foodstuff_seq_slot05 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  6,
+  ' . $foodstuff_seq_slot06 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  7,
+  ' . $foodstuff_seq_slot07 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  8,
+  ' . $foodstuff_seq_slot08 . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+if (!$result) {
+    die('クエリーが失敗しました。'.pg_last_error());
+}
+$result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_on,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  9,
+  ' . $foodstuff_seq_slot09 . ',
   current_timestamp,
   current_timestamp
  )
