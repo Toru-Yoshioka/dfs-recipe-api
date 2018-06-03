@@ -101,7 +101,16 @@ if (!$result) {
       SLOT (8) - <?php print($foodstuff_seq_slot08); ?><br/>
       SLOT (9) - <?php print($foodstuff_seq_slot09); ?><br/>
       <h4>調理時間(秒)</h4>
-      <?php print($cooking_time_seconds); ?><br/>
+<?php
+  if (strlen($cooking_time_seconds) <= 5) {
+    $cooking_time_seconds = $cooking_time_seconds . ":00";
+  }
+  $datetime1 = new DateTime('2018-01-01 00:00:00');
+  $datetime2 = new DateTime('2018-01-01 ' . $cooking_time_seconds);
+  $interval = $datetime1->diff($datetime2);
+  $formated_seconds = $interval->format('%s');
+?>
+      <?php print($formated_seconds); ?><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>
       <?php print($deliverable_uses); ?><br/>
