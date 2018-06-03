@@ -10,11 +10,13 @@
       border: #cccccc 1px solid;
       border-collapse: collapse;
       padding: 4px 4px 4px 4px;
+      font-size: smaller;
     }
     .border_inside td {
       border: #cccccc 1px solid;
       border-collapse: collapse;
       padding: 4px 4px 4px 4px;
+      font-size: smaller;
     }
     </style>
   </head>
@@ -132,30 +134,30 @@ ORDER BY
     $regist_date = $rows['regist_date'];
 ?>
       <tr class="border_inside">
-        <th rowspan="3"><?php print($recipe_seq); ?></th>
-        <th rowspan="3"><?php print($recipe_name_en); ?></th>
-        <th rowspan="3"><?php print($recipe_name_jp); ?></th>
-        <th rowspan="3"><?php print($cooking_equipment_seq); ?></th>
-        <th rowspan="3"><?php print($cookware_name_en); ?></th>
-        <th><?php print($foodstuff_name_en_slot01); ?></th>
-        <th><?php print($foodstuff_name_en_slot02); ?></th>
-        <th><?php print($foodstuff_name_en_slot03); ?></th>
-        <th rowspan="3"><?php print($cooking_time_seconds); ?></th>
-        <th rowspan="3"><?php print($deliverable_uses); ?></th>
-        <th rowspan="3"><?php print($deliverable_energy); ?></th>
-        <th rowspan="3"><?php print($experience_point); ?></th>
-        <th rowspan="3"><?php print($regist_date); ?></th>
-        <th rowspan="3"><?php print($update_date); ?></th>
+        <td rowspan="3"><?php print($recipe_seq); ?></td>
+        <td rowspan="3"><?php print($recipe_name_en); ?></td>
+        <td rowspan="3"><?php print($recipe_name_jp); ?></td>
+        <td rowspan="3"><?php print($cooking_equipment_seq); ?></td>
+        <td rowspan="3"><?php print($cookware_name_en); ?></td>
+        <td><?php print($foodstuff_name_en_slot01); ?></td>
+        <td><?php print($foodstuff_name_en_slot02); ?></td>
+        <td><?php print($foodstuff_name_en_slot03); ?></td>
+        <td rowspan="3"><?php print($cooking_time_seconds); ?></td>
+        <td rowspan="3"><?php print($deliverable_uses); ?></td>
+        <td rowspan="3"><?php print($deliverable_energy); ?></td>
+        <td rowspan="3"><?php print($experience_point); ?></td>
+        <td rowspan="3"><?php print($regist_date); ?></td>
+        <td rowspan="3"><?php print($update_date); ?></td>
       </tr>
       <tr class="border_inside">
-        <th><?php print($foodstuff_name_en_slot04); ?></th>
-        <th><?php print($foodstuff_name_en_slot05); ?></th>
-        <th><?php print($foodstuff_name_en_slot06); ?></th>
+        <td><?php print($foodstuff_name_en_slot04); ?></td>
+        <td><?php print($foodstuff_name_en_slot05); ?></td>
+        <td><?php print($foodstuff_name_en_slot06); ?></td>
       </tr>
       <tr class="border_inside">
-        <th><?php print($foodstuff_name_en_slot07); ?></th>
-        <th><?php print($foodstuff_name_en_slot08); ?></th>
-        <th><?php print($foodstuff_name_en_slot09); ?></th>
+        <td><?php print($foodstuff_name_en_slot07); ?></td>
+        <td><?php print($foodstuff_name_en_slot08); ?></td>
+        <td><?php print($foodstuff_name_en_slot09); ?></td>
       </tr>
 <?php
   }
