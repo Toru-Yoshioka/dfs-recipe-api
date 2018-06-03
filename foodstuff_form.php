@@ -83,7 +83,6 @@ ORDER BY
   }
 ?>
     </table>
-    <br/>
     <form method="post" action="./foodstuff_regist.php">
       <h4>食材名</h4>
       英名：<br/>
