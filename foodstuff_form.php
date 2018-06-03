@@ -9,10 +9,12 @@
     .border_inside th {
       border: #cccccc 1px solid;
       border-collapse: collapse;
+      padding: 4px 4px 4px 4px;
     }
     .border_inside td {
       border: #cccccc 1px solid;
       border-collapse: collapse;
+      padding: 4px 4px 4px 4px;
     }
     </style>
   </head>
