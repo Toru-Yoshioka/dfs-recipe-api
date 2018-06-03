@@ -36,10 +36,11 @@ if (!$link) {
   $foodstuff_items = $_POST['foodstuff_items'];
   if (is_array($foodstuff_items)) {
     foreach ($foodstuff_items as $key => $value) {
-      echo "キー : " . $key . "\n";
-      echo "値 : " . $value . "\n";
-      echo "\n";
-      echo "<br/>";
+?>
+  <p>キー : <?php print($key); ?><br/>
+     値 : <?php print($value); ?><br/>
+  </p>
+<?php
     }
   }
   // レシピ一覧取得
