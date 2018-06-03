@@ -34,11 +34,13 @@ if (!$link) {
 <?php
   // 検索キーワード(食材Seq)取得
   $target_recipe_seq_keys = "";
-  $foodstuff_items = $_POST['foodstuff_items'];
+  $foodstuff_items = $_POST['FOODSTUFF_ITEMS'];
   if (is_array($foodstuff_items)) {
-    $search_keys = implode(',', $foodstuff_items);
-    // 抽出レシピSeq取得
-    $recipe_seq_result = pg_query('
+    if ($_POST[foodstuff_items'SEARCH_TYPE'] === '0') {
+      // あいまい検索
+      $search_keys = implode(',', $foodstuff_items);
+      // あいまい検索レシピSeq取得
+      $recipe_seq_result = pg_query('
 SELECT
   recipe_seq
 FROM
@@ -48,8 +50,42 @@ WHERE
 GROUP BY
   recipe_seq
 ');
-    if (!$recipe_seq_result) {
-      die('クエリーが失敗しました。'.pg_last_error());
+      if (!$recipe_seq_result) {
+        die('クエリーが失敗しました。'.pg_last_error());
+      }
+    } else {
+      // 絞り込み検索
+      $exists_sections = "";
+      foreach ($foodstuff_items as $value) {
+        $exists_sections = $exists_sections . '
+AND
+  EXISTS (
+    SELECT
+      null
+    FROM
+      dfs_recipe_foodstuff_join
+    WHERE
+      recipe_seq = drfja.recipe_seq
+      AND
+      foodstuff_seq = ' . $value . ')';
+      }
+      // あいまい検索レシピSeq取得
+      $recipe_seq_result = pg_query('
+SELECT
+  drfja.recipe_seq
+FROM
+  dfs_recipe_foodstuff_join drfja
+WHERE
+  drfja.foodstuff_seq != 0
+' . $exists_sections . '
+GROUP BY
+  drfja.recipe_seq
+ORDER BY
+  drfja.recipe_seq
+');
+      if (!$recipe_seq_result) {
+        die('クエリーが失敗しました。'.pg_last_error());
+      }
     }
     $target_recipe_seqs = [];
     for ($i = 0 ; $i < pg_num_rows($recipe_seq_result) ; $i++){
@@ -101,7 +137,6 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
-    <p>■<?php print($target_recipe_seq_keys); ?>■</p>
     <table class="border_outside">
       <tr class="border_inside">
         <th rowspan="3">Seq</th>
@@ -193,6 +228,9 @@ ORDER BY
 ?>
     </table>
     <form method="post" action="./recipe_search.php">
+      <h4>検索方法</h4>
+      <label name="aimai"><input type="radio" name="SEARCH_TYPE" value="0"/>あいまい検索</label>&nbsp;&nbsp;
+      <label name="aimai"><input type="radio" name="SEARCH_TYPE" value="1"/>絞り込み検索</label>
       <h4>材料選択</h4>
 <?php
   // 食材一覧取得
@@ -214,7 +252,7 @@ ORDER BY
     $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
 ?>
       <label name="<?php print($rows['foodstuff_seq']); ?>">
-        <input type="checkbox" name="foodstuff_items[]" value="<?php print($rows['foodstuff_seq']); ?>"/>
+        <input type="checkbox" name="FOODSTUFF_ITEMS[]" value="<?php print($rows['foodstuff_seq']); ?>"/>
         <?php print($rows['foodstuff_name_en']); ?>&nbsp;&nbsp;
       </label>
 <?php
