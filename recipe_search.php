@@ -36,7 +36,7 @@ if (!$link) {
   $target_recipe_seq_keys = "";
   $foodstuff_items = $_POST['foodstuff_items'];
   if (is_array($foodstuff_items)) {
-    $search_keys = implode($foodstuff_items);
+    $search_keys = implode(',', $foodstuff_items);
     // 抽出レシピSeq取得
     $recipe_seq_result = pg_query('
 SELECT
@@ -56,7 +56,7 @@ GROUP BY
       $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
       $target_recipe_seqs[] = $rows['recipe_seq'];
     }
-    $target_recipe_seq_keys = implode($target_recipe_seqs);
+    $target_recipe_seq_keys = implode(',', $target_recipe_seqs);
     $target_recipe_seq_keys = "WHERE vrwn.recipe_seq in (" . $target_recipe_seq_keys . ")";
   }
   // レシピ一覧取得
