@@ -33,13 +33,31 @@ if (!$link) {
     <h3>DFS レシピ 検索フォーム</h3>
 <?php
   // 検索キーワード(食材Seq)取得
+  $target_recipe_seq_keys = "";
   $foodstuff_items = $_POST['foodstuff_items'];
   if (is_array($foodstuff_items)) {
-    foreach ($foodstuff_items as $key => $value) {
-?>
-  <p><?php print($key . ":" . $value); ?></p>
-<?php
+    $search_keys = implode($foodstuff_items);
+    // 抽出レシピSeq取得
+    $recipe_seq_result = pg_query('
+SELECT
+  recipe_seq
+FROM
+  dfs_recipe_foodstuff_join
+WHERE
+  foodstuff_seq in (' . $search_keys . ')
+GROUP BY
+  recipe_seq
+');
+    if (!$recipe_seq_result) {
+      die('クエリーが失敗しました。'.pg_last_error());
     }
+    $target_recipe_seqs = [];
+    for ($i = 0 ; $i < pg_num_rows($recipe_seq_result) ; $i++){
+      $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
+      $target_recipe_seqs[] = $rows['recipe_seq'];
+    }
+    $target_recipe_seq_keys = implode($target_recipe_seqs);
+    $target_recipe_seq_keys = "WHERE vrwn.recipe_seq in (" . $target_recipe_seq_keys . ")";
   }
   // レシピ一覧取得
   $recipe_result = pg_query('
@@ -75,6 +93,7 @@ SELECT
   vrwn.regist_date
 FROM
  view_recipe_with_name vrwn
+' . $target_recipe_seq_keys . '
 ORDER BY
  vrwn.recipe_name_en ASC
 ');
