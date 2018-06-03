@@ -1,6 +1,17 @@
 <html>
   <head>
     <title>DFS Foodstuff Input Form</title>
+    <style type="text/css">
+    .border_outside {
+      border: #aaaaaa 2px solid;
+    }
+    .border_inside th {
+      border: #cccccc 1px solid;
+    }
+    .border_inside td {
+      border: #cccccc 1px solid;
+    }
+    </style>
   </head>
   <body>
 <?php
@@ -33,8 +44,8 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
-    <table style="border: #aaaaaa 2px solid;">
-      <tr>
+    <table class="border_outside">
+      <tr class="border_inside">
         <th>Seq</th>
         <th>食材名(英名)</th>
         <th>食材名(和名)</th>
@@ -54,7 +65,7 @@ ORDER BY
     $update_date = $rows['update_date'];
     $regist_date = $rows['regist_date'];
 ?>
-      <tr>
+      <tr class="border_inside">
         <td><?php print($foodstuff_seq); ?></td>
         <td><?php print($foodstuff_name_en); ?></td>
         <td><?php print($foodstuff_name_jp); ?></td>
