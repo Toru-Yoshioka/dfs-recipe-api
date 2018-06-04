@@ -31,7 +31,7 @@ $array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
 $array = array_values($array); // これはキーを連番に振りなおしてるだけ
 
 foreach ($array as $line) {
-  preg_match('/<strong class=/', $line, $match);
+  preg_match('/\<strong class=\'name\'/', $line, $match);
 ?>
   <p>■<?php print($match[0]); ?>■</p>
 <?php
