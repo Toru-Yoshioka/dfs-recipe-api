@@ -24,7 +24,19 @@
 <?php
 $url = "https://www.digitalfarmsystem.com/dfs-recipes/";
 $html = file_get_contents($url);
-var_dump($html);
+
+$array = explode("\n", $html); // とりあえず行に分割
+$array = array_map('trim', $array); // 各行にtrim()をかける
+$array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
+$array = array_values($array); // これはキーを連番に振りなおしてるだけ
+
+foreach ($array as $line) {
+  if(strpos($line,'id=') !== false){
+?>
+  <p>■<?php print($line); ?>■</p>
+<?php
+  }
+}
 ?>
   </body>
 </html>
