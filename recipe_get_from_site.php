@@ -40,9 +40,9 @@ foreach ($array as $line) {
   $match_result = "";
   preg_match('/<strong class=\'name\'>[^<]+<\/strong>/', $line, $match1);
   if (strlen($match1[0]) <= 0) {
-    preg_match('/(DFS[^<]+)<br\/>/', $line, $match2);
+    preg_match('/^(DFS[^<]+)<br\/>/', $line, $match2);
     if (strlen($match2[1]) <= 0) {
-      preg_match('/([0-9] \-[^<]+)<br\/>/', $line, $match3);
+      preg_match('/^([0-9] \-[^<]+)<br\/>/', $line, $match3);
       if (strlen($match3[1]) <= 0) {
       } else {
         $match_result = $match3[1];
