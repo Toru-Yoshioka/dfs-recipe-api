@@ -33,7 +33,7 @@ $array = array_values($array); // これはキーを連番に振りなおして�
 foreach ($array as $line) {
   preg_match('/<strong class=\'name\'>[^<]+<\/strong>/', $line, $match);
 ?>
-  <p>■<?php print($match); ?>■</p>
+  <p>■<?php print($match[0]); ?>■</p>
 <?php
 }
 ?>
