@@ -38,12 +38,33 @@ $array = array_values($array); // これはキーを連番に振りなおして�
 
 foreach ($array as $line) {
   $match_result = "";
+  // レシピ名
   preg_match('/<strong class=\'name\'>[^<]+<\/strong>/', $line, $match1);
   if (strlen($match1[0]) <= 0) {
+    // 調理器具
     preg_match('/^(DFS[^<]+)<br\/>/', $line, $match2);
     if (strlen($match2[1]) <= 0) {
+      // スロット - 食材
       preg_match('/^([0-9] \-[^<]+)<br\/>/', $line, $match3);
       if (strlen($match3[1]) <= 0) {
+        // 調理時間
+        preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match4);
+        if (strlen($match4[1]) <= 0) {
+          // USES EP XP
+          preg_match('/^([0-9]+) Uses \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match5);
+          if (strlen($match5[1]) <= 0) {
+            // 公開終了日
+            preg_match('/^Ends: ([0-9]+\-[0-9]+\-[0-9]+)<br\/>/', $line, $match6);
+            if (strlen($match6[1]) <= 0) {
+            } else {
+              $match_result = $match6[1];
+            }
+          } else {
+            $match_result = "USES:" . $match5[1] . " EP:" . $match5[2] . " XP:" . $match5[3];
+          }
+        } else {
+          $match_result = $match4[1];
+        }
       } else {
         $match_result = $match3[1];
       }
