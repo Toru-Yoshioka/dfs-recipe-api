@@ -31,7 +31,7 @@ $array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
 $array = array_values($array); // これはキーを連番に振りなおしてるだけ
 
 foreach ($array as $line) {
-  if(strpos($line,'id=') !== false){
+  if(strpos($line,'<strong') !== false){
 ?>
   <p>■<?php print($line); ?>■</p>
 <?php
