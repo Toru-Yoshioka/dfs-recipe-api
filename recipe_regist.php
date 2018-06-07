@@ -37,6 +37,8 @@ $experience_point = $_POST['EXPERIENCE_POINT'];
 $ends_date = $_POST['ENDS_DATE'];
 if ($ends_date != '') {
   $ends_date = 'to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')';
+} else {
+  $ends_date = 'null';
 }
 // レシピシーケンス取得
 $recipe_seq_result = pg_query('
