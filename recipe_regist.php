@@ -34,7 +34,7 @@ $cooking_time_seconds = $_POST['COOKING_TIME_SECONDS'];
 $deliverable_uses = $_POST['DELIVERABLE_USES'];
 $deliverable_energy = $_POST['DELIVERABLE_ENERGY'];
 $experience_point = $_POST['EXPERIENCE_POINT'];
-$ends_date = $POST['ENDS_DATE'] . " 00:00:00";
+$ends_date = $POST['ENDS_DATE'];
 // レシピシーケンス取得
 $recipe_seq_result = pg_query('
 SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
