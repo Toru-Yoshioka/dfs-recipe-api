@@ -36,7 +36,7 @@ $deliverable_energy = $_POST['DELIVERABLE_ENERGY'];
 $experience_point = $_POST['EXPERIENCE_POINT'];
 $ends_date = $POST['ENDS_DATE'];
 if ($ends_date != '') {
-  $ends_date = "to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\'),";
+  $ends_date = "to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')";
 }
 // レシピシーケンス取得
 $recipe_seq_result = pg_query('
