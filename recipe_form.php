@@ -312,6 +312,9 @@ ORDER BY
       <h4>調理により得られる経験値</h4>
       <input type="text" name="EXPERIENCE_POINT" size="8" value="1"/><br/>
       <br/>
+      <h4>公開終了日</h4>
+      <input type="date" name="ENDS_DATE" /><br/>
+      <br/>
       <input type="submit" value="　登　録　"/>
     </form>
 <?php
