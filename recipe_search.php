@@ -137,7 +137,7 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
-    <table class="border_outside">
+    <table class="border_outside"> 
       <tr class="border_inside">
         <th rowspan="3">Seq</th>
         <th rowspan="3">レシピ名(英名)</th>
