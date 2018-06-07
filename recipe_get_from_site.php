@@ -97,7 +97,7 @@ SELECT
 FROM
  dfs_foodstuff_mst dfm
 WHERE
- dfm.foodstuff_name_en = ' . trim($foodstuff_name) . '
+ dfm.foodstuff_name_en = \'' . trim($foodstuff_name) . '\'
 ');
         if (!$foodstuff_result) {
           die('クエリーが失敗しました。'.pg_last_error());
@@ -130,7 +130,7 @@ INSERT INTO
 	regist_date
   ) VALUES (
   ' . $next_foodstuff_seq . ',
-  \'' . $foodstuff_name . '\',
+  \'' . trim($foodstuff_name) . '\',
   \'\',
   0,
   0,
