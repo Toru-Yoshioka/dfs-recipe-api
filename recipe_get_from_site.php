@@ -87,7 +87,7 @@ foreach ($array as $line) {
         // スロット - 食材
         $slot_foodstuff = $match3[1];
         // スロットと食材に分割
-        list(trim($slot_no), trim($foodstuff_name)) = explode('-', $slot_foodstuff);
+        list($slot_no, $foodstuff_name) = explode('-', $slot_foodstuff);
         // 食材名で dfs_foodstuff_mst を検索
         $foodstuff_result = pg_query('
 SELECT
