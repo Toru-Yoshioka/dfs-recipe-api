@@ -138,7 +138,7 @@ INSERT INTO
   current_timestamp
  )
 ');
-          if (!$result) {
+          if (!$new_foodstuff_result) {
             die('クエリーが失敗しました。'.pg_last_error());
           }
         }
