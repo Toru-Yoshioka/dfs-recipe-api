@@ -71,8 +71,8 @@ INSERT INTO
   ' . $formated_seconds . ',
   ' . $deliverable_uses . ',
   ' . $deliverable_energy . ',
-  ' . $ends_date . ',
   ' . $experience_point . ',
+  ' . $ends_date . ',
   current_timestamp,
   current_timestamp
  )
