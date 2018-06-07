@@ -34,7 +34,7 @@ $cooking_time_seconds = $_POST['COOKING_TIME_SECONDS'];
 $deliverable_uses = $_POST['DELIVERABLE_USES'];
 $deliverable_energy = $_POST['DELIVERABLE_ENERGY'];
 $experience_point = $_POST['EXPERIENCE_POINT'];
-$ends_date = $POST['ENDS_DATE'];
+$ends_date = $_POST['ENDS_DATE'];
 if ($ends_date != '') {
   $ends_date = 'to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')';
 }
