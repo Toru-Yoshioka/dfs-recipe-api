@@ -281,7 +281,27 @@ ORDER BY
       </select>
       <br/>
       <h4>調理時間(秒)</h4>
-      <input type="time" name="COOKING_TIME_SECONDS" step="1" value="00:01:00"/><br/>
+      <input type="text" name="COOKING_TIME_HOURS" value="00"/>&nbsp;:&nbsp;
+      <select name="COOKING_TIME_MINUTES">
+<?php
+  for ($i = 0 ; $i <= 60; $i++) {
+    $min_value = str_pad($i, 2, 0, STR_PAD_LEFT);
+?>
+        <option value="<?php print($min_value); ?>"><?php print($min_value); ?></option>
+<?php
+  }
+?>
+      </select>&nbsp;:&nbsp;
+      <select name="COOKING_TIME_SECONDS">
+<?php
+  for ($i = 0 ; $i <= 60; $i++) {
+    $sec_value = str_pad($i, 2, 0, STR_PAD_LEFT);
+?>
+        <option value="<?php print($sec_value); ?>"><?php print($sec_value); ?></option>
+<?php
+  }
+?>
+      </select><br/>
       <br/>
       <h4>成果物の使用可能回数</h4>
       <input type="text" name="DELIVERABLE_USES" size="8" value="1"/><br/>
