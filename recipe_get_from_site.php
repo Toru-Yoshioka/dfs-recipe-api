@@ -83,7 +83,10 @@ foreach ($array as $line) {
               if (strlen($match7[1]) <= 0) {
               } else {
                 // レシピ登録処理
-
+                // 公開終了日フォーマット
+                if ($ends_date != 'null') {
+                  $ends_date = 'to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')';
+                }
                 // レシピシーケンス取得
                 $recipe_seq_result = pg_query('
 SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
@@ -148,6 +151,9 @@ INSERT INTO
                   if (!$result) {
                     die('クエリーが失敗しました。'.pg_last_error());
                   }
+                  // 再初期化
+                  $ends_date = 'null';
+                  $resipe_foodstuff_join_array = array();
                 }
               }
             } else {
