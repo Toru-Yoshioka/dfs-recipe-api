@@ -140,7 +140,7 @@ INSERT INTO
   ) VALUES (
   ' . $next_recipe_seq . ',
   ' . $i . ',
-  ' . intVal($resipe_foodstuff_join_array[$i]) . ',
+  ' . $resipe_foodstuff_join_array[$i] . ',
   current_timestamp,
   current_timestamp
  )
