@@ -54,6 +54,10 @@ $array = array_map('trim', $array); // 各行にtrim()をかける
 $array = array_filter($array, 'strlen'); // 文字数が0の行を取り除く
 $array = array_values($array); // これはキーを連番に振りなおしてるだけ
 
+// レシピ登録用変数初期化
+$ends_date = 'null';
+$resipe_foodstuff_join_array = array();
+
 foreach ($array as $line) {
   $match_result = "";
   // レシピ名
@@ -74,14 +78,91 @@ foreach ($array as $line) {
             // 公開終了日
             preg_match('/^Ends: ([0-9]+\-[0-9]+\-[0-9]+)<br\/>/', $line, $match6);
             if (strlen($match6[1]) <= 0) {
+              // セパレータ
+              preg_match('/^[\-]+<br\/><br\/>/', $line, $match7);
+              if (strlen($match7[1]) <= 0) {
+              } else {
+                // レシピ登録処理
+
+                // レシピシーケンス取得
+                $recipe_seq_result = pg_query('
+SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
+');
+                if (!$recipe_seq_result) {
+                  die('クエリーが失敗しました。'.pg_last_error());
+                }
+                $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
+                $next_recipe_seq = $rows['next_recipe_seq'];
+                // レシピマスタ登録
+                $result = pg_query('
+INSERT INTO
+  dfs_recipe_mst
+  (
+	recipe_seq,
+	recipe_name_en,
+	recipe_name_jp,
+	cooking_equipment_seq,
+	cooking_time_seconds,
+	deliverable_uses,
+	deliverable_energy,
+	experience_point,
+	ends_date,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  \'' . $recipe_name_en . '\',
+  \'\',
+  ' . $cooking_equipment_seq . ',
+  ' . $formated_seconds . ',
+  ' . $deliverable_uses . ',
+  ' . $deliverable_energy . ',
+  ' . $experience_point . ',
+  ' . $ends_date . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+                if (!$result) {
+                  die('クエリーが失敗しました。'.pg_last_error());
+                }
+                // 食材紐づけ登録
+                for ($i = 0 ; $i < 10 ; $i++){
+                  $result = pg_query('
+INSERT INTO
+  dfs_recipe_foodstuff_join
+  (
+	recipe_seq,
+	slot_no,
+	foodstuff_seq,
+	update_date,
+	regist_date
+  ) VALUES (
+  ' . $next_recipe_seq . ',
+  ' . $i . ',
+  ' . intVal($resipe_foodstuff_join_array[$i]) . ',
+  current_timestamp,
+  current_timestamp
+ )
+');
+                  if (!$result) {
+                    die('クエリーが失敗しました。'.pg_last_error());
+                  }
+                }
+              }
             } else {
-              $match_result = $match6[1];
+              $ends_date = $match6[1];
             }
           } else {
-            $match_result = "USES:" . $match5[1] . " EP:" . $match5[2] . " XP:" . $match5[3];
+            $deliverable_uses = $match5[1];
+            $deliverable_energy = $match5[2];
+            $experience_point = $match5[3];
           }
         } else {
-          $match_result = $match4[1];
+          // 調理時間
+          $cooking_time_array = explode(':', $match4[1]);
+          // 調理時間演算
+          $formated_seconds = ((intVal($cooking_time_array[0]) * 360) + ((intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[3]);
         }
       } else {
         // スロット - 食材
@@ -110,6 +191,7 @@ WHERE
           // 食材が登録済みだったらシーケンス取得
           $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
           $foodstuff_seq = $rows['foodstuff_seq'];
+          $resipe_foodstuff_join_array[intVal($slot_no)] = $foodstuff_seq;
         } else {
           // 食材が登録されていなかったらシーケンスを取得して登録
           $foodstuff_seq_result = pg_query('
@@ -145,15 +227,36 @@ INSERT INTO
           if (!$new_foodstuff_result) {
             die('クエリーが失敗しました。'.pg_last_error());
           }
+          // 配列登録
+          $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
         }
       }
     } else {
       // 調理器具名
       $cookware_name = $match2[1];
+      // 調理器具シーケンス取得
+      $cookware_result = pg_query('
+SELECT
+ dcm.cookware_seq,
+ dcm.cookware_name_en,
+ dcm.cookware_name_jp
+FROM
+ dfs_cookware_mst dcm
+WHERE
+ dcm.cookware_name_en = \'' . $cookware_name . '\'
+');
+        if (!$cookware_result) {
+          die('クエリーが失敗しました。'.pg_last_error());
+        }
+        if (pg_num_rows($cookware_result) > 0) {
+          // 調理器具が登録済みだったらシーケンス取得
+          $rows = pg_fetch_array($cookware_result, NULL, PGSQL_ASSOC);
+          $cooking_equipment_seq = $rows['cookware_seq'];
+        }
     }
   } else {
     // レシピ名
-    $recipe_name = $match1[0];
+    $recipe_name_en = $match1[0];
   }
   if (strlen($match_result) > 0) {
 ?>
