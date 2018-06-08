@@ -35,17 +35,17 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 // 接続に成功
-
+/*
 // レシピシーケンス取得
 $recipe_seq_result = pg_query('
-SELECT nextval(\'dfs_recipe_tmp_seq\') AS next_recipe_seq
+SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
 ');
 if (!$recipe_seq_result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
 $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
 $next_recipe_seq = $rows['next_recipe_seq'];
-
+*/
 $url = "https://www.digitalfarmsystem.com/dfs-recipes/";
 $html = file_get_contents($url);
 
@@ -157,9 +157,6 @@ INSERT INTO
                   $resipe_foodstuff_join_array = array();
                 }
                 */
-?>
-                <h4>■登録したよ！■</h4>
-<?php
               }
             } else {
               $ends_date = $match6[1];
@@ -256,14 +253,14 @@ FROM
 WHERE
  dcm.cookware_name_en = \'' . $cookware_name . '\'
 ');
-        if (!$cookware_result) {
-          die('クエリーが失敗しました。'.pg_last_error());
-        }
-        if (pg_num_rows($cookware_result) > 0) {
-          // 調理器具が登録済みだったらシーケンス取得
-          $rows = pg_fetch_array($cookware_result, NULL, PGSQL_ASSOC);
-          $cooking_equipment_seq = $rows['cookware_seq'];
-        }
+      if (!$cookware_result) {
+        die('クエリーが失敗しました。'.pg_last_error());
+      }
+      if (pg_num_rows($cookware_result) > 0) {
+        // 調理器具が登録済みだったらシーケンス取得
+        $rows = pg_fetch_array($cookware_result, NULL, PGSQL_ASSOC);
+        $cooking_equipment_seq = $rows['cookware_seq'];
+      }
     }
   } else {
     // レシピ名
