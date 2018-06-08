@@ -87,9 +87,12 @@ foreach ($array as $line) {
         // スロット - 食材
         $slot_foodstuff = $match3[1];
         // スロットと食材に分割
-        list($slot_no, $foodstuff_name1, $foodstuff_name2, $foodstuff_name3, $foodstuff_name4, $foodstuff_name5) = explode('-', $slot_foodstuff);
+        list($slot_no, $foodstuff_name1, $foodstuff_name2, $foodstuff_name3, $foodstuff_name4, $foodstuff_name5) =
+        $slot_foodstuff_array = explode('-', $slot_foodstuff);
+        $slot_no = $slot_foodstuff_array[0];
+        $foodstuff_array = array_slice($slot_foodstuff_array, 1);
         // 食材名で dfs_foodstuff_mst を検索
-        $foodstuff_name = trim($foodstuff_name1 . $foodstuff_name2 . $foodstuff_name3 . $foodstuff_name4 . $foodstuff_name5);
+        $foodstuff_name = implode('-', $foodstuff_array);
         $foodstuff_result = pg_query('
 SELECT
  dfm.foodstuff_seq,
