@@ -82,6 +82,7 @@ foreach ($array as $line) {
               preg_match('/^[\-]+<br\/><br\/>/', $line, $match7);
               if (strlen($match7[1]) <= 0) {
               } else {
+              /*
                 // レシピ登録処理
                 // 公開終了日フォーマット
                 if ($ends_date != 'null') {
@@ -155,6 +156,10 @@ INSERT INTO
                   $ends_date = 'null';
                   $resipe_foodstuff_join_array = array();
                 }
+                */
+?>
+                <h4>■登録したよ！■</h4>
+<?php
               }
             } else {
               $ends_date = $match6[1];
