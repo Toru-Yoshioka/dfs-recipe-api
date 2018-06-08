@@ -198,7 +198,7 @@ WHERE
           // 食材が登録済みだったらシーケンス取得
           $rows = pg_fetch_array($foodstuff_result, NULL, PGSQL_ASSOC);
           $foodstuff_seq = $rows['foodstuff_seq'];
-          $resipe_foodstuff_join_array[intVal($slot_no)] = $foodstuff_seq;
+          // $resipe_foodstuff_join_array[intVal($slot_no)] = $foodstuff_seq;
         } else {
           // 食材が登録されていなかったらシーケンスを取得して登録
           $foodstuff_seq_result = pg_query('
@@ -235,7 +235,7 @@ INSERT INTO
             die('クエリーが失敗しました。'.pg_last_error());
           }
           // 配列登録
-          $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
+          // $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
         }
       }
     } else {
