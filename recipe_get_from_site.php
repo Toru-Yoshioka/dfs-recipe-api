@@ -87,8 +87,9 @@ foreach ($array as $line) {
         // スロット - 食材
         $slot_foodstuff = $match3[1];
         // スロットと食材に分割
-        list($slot_no, $foodstuff_name) = explode('-', $slot_foodstuff);
+        list($slot_no, $foodstuff_name1, $foodstuff_name2, $foodstuff_name3, $foodstuff_name4, $foodstuff_name5) = explode('-', $slot_foodstuff);
         // 食材名で dfs_foodstuff_mst を検索
+        $foodstuff_name = trim($foodstuff_name1 . $foodstuff_name2 . $foodstuff_name3 . $foodstuff_name4 . $foodstuff_name5);
         $foodstuff_result = pg_query('
 SELECT
  dfm.foodstuff_seq,
@@ -97,7 +98,7 @@ SELECT
 FROM
  dfs_foodstuff_mst dfm
 WHERE
- dfm.foodstuff_name_en = \'' . trim($foodstuff_name) . '\'
+ dfm.foodstuff_name_en = \'' . $foodstuff_name . '\'
 ');
         if (!$foodstuff_result) {
           die('クエリーが失敗しました。'.pg_last_error());
@@ -130,7 +131,7 @@ INSERT INTO
 	regist_date
   ) VALUES (
   ' . $next_foodstuff_seq . ',
-  \'' . trim($foodstuff_name) . '\',
+  \'' . $foodstuff_name . '\',
   \'\',
   0,
   0,
