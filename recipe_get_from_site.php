@@ -188,10 +188,6 @@ INSERT INTO
   // セパレータ
   preg_match('/^([\-]+<br\/><br\/>)/', $line, $match);
   if (strlen($match[1]) > 0) {
-?>
-  <div class="border_inside">■<?php print($recipe_name_en); ?>■</div>
-<?php
-/*
     // レシピ登録処理
     // 公開終了日フォーマット
     if ($ends_date != 'null') {
@@ -266,7 +262,6 @@ INSERT INTO
     $ends_date = 'null';
     $resipe_foodstuff_join_array = array();
     continue;
-*/
   }
 }
 
