@@ -158,7 +158,7 @@ INSERT INTO
         die('クエリーが失敗しました。'.pg_last_error());
       }
       // 配列登録
-      // $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
+      $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
     }
     continue;
   }
