@@ -27,7 +27,7 @@ case 'array':
   }
   break;
 default:
-  print ($request);
+  print ($request) . "\n";
 }
 print "--- PARAMETER END ---\n";
 ?>
