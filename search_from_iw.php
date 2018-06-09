@@ -7,6 +7,7 @@
  * @copyright 2008
  */
  
+/*
 foreach ($_SERVER as $k => $v)
 {
 	if( substr($k, 0, 5) == 'HTTP_')
@@ -14,6 +15,8 @@ foreach ($_SERVER as $k => $v)
 		print "\n". $k. "\t". $v;
 	}
 }
+*/
 $request = $_POST['ITEM'];
-print $request;
+print "--- REQUEST IW TEST ---\n";
+print $request . "\n";
 ?>
