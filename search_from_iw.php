@@ -16,7 +16,8 @@ foreach ($_SERVER as $k => $v)
 	}
 }
 */
-$request = $_POST['ITEM'];
+$request = $_GET['ITEM'];
+print "--- REQUEST IW TEST ---\n";
 switch (gettype($request)) {
 case 'array':
   foreach ($request as $key => $value) {
@@ -28,6 +29,5 @@ case 'array':
 default:
   print ($request);
 }
-print "--- REQUEST IW TEST ---\n";
-print $request . "\n";
+print "--- PARAMETER END ---\n";
 ?>
