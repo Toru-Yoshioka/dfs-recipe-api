@@ -16,7 +16,7 @@ foreach ($_SERVER as $k => $v)
 	}
 }
 */
-$request = $_GET['ITEM'];
+$request = $_POST['ITEM'];
 print "--- REQUEST IW TEST ---\n";
 switch (gettype($request)) {
 case 'array':
