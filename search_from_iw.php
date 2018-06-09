@@ -17,6 +17,17 @@ foreach ($_SERVER as $k => $v)
 }
 */
 $request = $_POST['ITEM'];
+switch (gettype($request)) {
+case 'array':
+  foreach ($request as $key => $value) {
+    echo "キー : " . $key . "\n";
+    echo "値 : " . $value . "\n";
+    echo "\n";
+  }
+  break;
+default:
+  print ($request);
+}
 print "--- REQUEST IW TEST ---\n";
 print $request . "\n";
 ?>
