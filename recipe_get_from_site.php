@@ -68,7 +68,6 @@ foreach ($array as $line) {
     continue;
   }
   // 調理器具
-/*
   preg_match('/^(DFS[^<]+)<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     // 調理器具名
@@ -163,7 +162,6 @@ INSERT INTO
     }
     continue;
   }
-*/
   // 調理時間
 /*
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
