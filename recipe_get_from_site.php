@@ -168,7 +168,10 @@ INSERT INTO
     // 調理時間
     $cooking_time_array = explode(':', $match[1]);
     // 調理時間演算
-    $formated_seconds = ((intVal($cooking_time_array[0]) * 360) + ((intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
+    // $formated_seconds = ((intVal($cooking_time_array[0]) * 360) + ((intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
+?>
+    <div class="border_inside"><?php print($cooking_time_array[0]); ?>■<?php print($cooking_time_array[1]); ?>■<?php print($cooking_time_array[2]); ?></div>
+<?php
     continue;
   }
 /*
