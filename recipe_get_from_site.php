@@ -163,7 +163,6 @@ INSERT INTO
     continue;
   }
   // 調理時間
-/*
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     // 調理時間
@@ -172,7 +171,6 @@ INSERT INTO
     $formated_seconds = ((intVal($cooking_time_array[0]) * 360) + ((intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
     continue;
   }
-*/
 /*
   // USES EP XP
   preg_match('/^([0-9]+) Uses \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
