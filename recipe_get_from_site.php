@@ -188,22 +188,26 @@ INSERT INTO
   // セパレータ
   preg_match('/^[\-]+<br\/><br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
-                // レシピ登録処理
-                // 公開終了日フォーマット
-                if ($ends_date != 'null') {
-                  $ends_date = 'to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')';
-                }
-                // レシピシーケンス取得
-                $recipe_seq_result = pg_query('
+?>
+  <div class="border_inside">■<?php print($recipe_name_en); ?>■</div>
+<?php
+/*
+    // レシピ登録処理
+    // 公開終了日フォーマット
+    if ($ends_date != 'null') {
+      $ends_date = 'to_date(\'' . $ends_date . '\', \'YYYY/MM/DD\')';
+    }
+    // レシピシーケンス取得
+    $recipe_seq_result = pg_query('
 SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
 ');
-                if (!$recipe_seq_result) {
-                  die('クエリーが失敗しました。'.pg_last_error());
-                }
-                $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
-                $next_recipe_seq = $rows['next_recipe_seq'];
-                // レシピマスタ登録
-                $result = pg_query('
+    if (!$recipe_seq_result) {
+      die('クエリーが失敗しました。'.pg_last_error());
+    }
+    $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
+    $next_recipe_seq = $rows['next_recipe_seq'];
+    // レシピマスタ登録
+    $result = pg_query('
 INSERT INTO
   dfs_recipe_mst
   (
@@ -232,12 +236,12 @@ INSERT INTO
   current_timestamp
  )
 ');
-                if (!$result) {
-                  die('クエリーが失敗しました。'.pg_last_error());
-                }
-                // 食材紐づけ登録
-                for ($i = 0 ; $i < 10 ; $i++){
-                  $result = pg_query('
+    if (!$result) {
+      die('クエリーが失敗しました。'.pg_last_error());
+    }
+    // 食材紐づけ登録
+    for ($i = 0 ; $i < 10 ; $i++){
+      $result = pg_query('
 INSERT INTO
   dfs_recipe_foodstuff_join
   (
@@ -254,14 +258,15 @@ INSERT INTO
   current_timestamp
  )
 ');
-                  if (!$result) {
-                    die('クエリーが失敗しました。'.pg_last_error());
-                  }
-                  // 再初期化
-                  $ends_date = 'null';
-                  $resipe_foodstuff_join_array = array();
-                }
+      if (!$result) {
+        die('クエリーが失敗しました。'.pg_last_error());
+      }
+    }
+    // 再初期化
+    $ends_date = 'null';
+    $resipe_foodstuff_join_array = array();
     continue;
+*/
   }
 }
 
