@@ -61,7 +61,7 @@ $data = $_POST['items'];
 $item_array = array_unique(explode('/', $data));
 foreach ($item_array as $value) {
   $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
-  if (strlen($str_grep) > 0) {
+  if (strlen($in_section) > 0) {
     $in_section = $in_section . ",'" . $str_grep . "'";
   } else {
     $in_section = "'" . $str_grep . "'";
