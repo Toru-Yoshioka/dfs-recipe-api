@@ -51,7 +51,8 @@ default:
 $data = $_POST['items'];
 $item_array = array_unique(explode('/', $data));
 foreach ($item_array as $value) {
-  print "値 : " . $value . "\n";
+  $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
+  print "値 : " . $str_grep . "\n";
 }
 
 print "--- PARAMETER END ---\n";
