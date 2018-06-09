@@ -14,4 +14,6 @@ foreach ($_SERVER as $k => $v)
 		print "\n". $k. "\t". $v;
 	}
 }
+$request = $_POST['ITEM'];
+print $request;
 ?>

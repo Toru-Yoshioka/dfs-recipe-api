@@ -35,17 +35,6 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 // 接続に成功
-/*
-// レシピシーケンス取得
-$recipe_seq_result = pg_query('
-SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
-');
-if (!$recipe_seq_result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-}
-$rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
-$next_recipe_seq = $rows['next_recipe_seq'];
-*/
 $url = "https://www.digitalfarmsystem.com/dfs-recipes/";
 $html = file_get_contents($url);
 
