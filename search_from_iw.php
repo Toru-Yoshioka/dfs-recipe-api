@@ -62,9 +62,9 @@ $item_array = array_unique(explode('/', $data));
 foreach ($item_array as $value) {
   $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
   if (strlen($str_grep) > 0) {
-    $in_section = $in_section . ",'" . $str_grep . "'"
+    $in_section = $in_section . ",'" . $str_grep . "'";
   } else {
-    $in_section = "'" . $str_grep . "'"
+    $in_section = "'" . $str_grep . "'";
   } 
   //print "値 : " . $str_grep . "\n";
 }
@@ -89,7 +89,7 @@ if (!$result) {
 $response = "";
 for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  print($rows['foodstuff_name_en'] . "\n");
+  print $rows['foodstuff_name_en'] . "\n";
 }
 
 $close_flag = pg_close($link);
