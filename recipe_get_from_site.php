@@ -239,7 +239,7 @@ INSERT INTO
     for ($i = 0 ; $i < 10 ; $i++){
       // 配列にスロットが存在するかチェック
       $foodstuff_seq = "0";
-      if (array_key_exists($i, resipe_foodstuff_join_array)) {
+      if (array_key_exists($i, $resipe_foodstuff_join_array)) {
         $foodstuff_seq = $resipe_foodstuff_join_array[intVal($i)];
       }
       $result = pg_query('
