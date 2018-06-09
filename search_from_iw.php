@@ -34,6 +34,18 @@ print "--- PARAMETER END ---\n";
 */
 $json_string = file_get_contents('php://input');
 print $json_string . "\n";
+$obj = json_decode($json_string);
+print "TYPE: " . gettype($obj) . "\n";
+switch (gettype($obj)) {
+case 'array':
+  foreach ($obj as $value) {
+    echo "値 : " . $value . "\n";
+    echo "\n";
+  }
+  break;
+default:
+  print ($obj) . "\n";
+}
 
 print "--- PARAMETER END ---\n";
 ?>
