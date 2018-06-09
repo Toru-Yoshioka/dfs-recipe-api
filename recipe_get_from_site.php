@@ -186,7 +186,7 @@ INSERT INTO
     continue;
   }
   // セパレータ
-  preg_match('/^[\-]+<br\/><br\/>/', $line, $match);
+  preg_match('/^([\-]+<br\/><br\/>)/', $line, $match);
   if (strlen($match[1]) > 0) {
 ?>
   <div class="border_inside">■<?php print($recipe_name_en); ?>■</div>
