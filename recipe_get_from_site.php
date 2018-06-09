@@ -68,6 +68,7 @@ foreach ($array as $line) {
     continue;
   }
   // 調理器具
+/*
   preg_match('/^(DFS[^<]+)<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     // 調理器具名
@@ -162,7 +163,9 @@ INSERT INTO
     }
     continue;
   }
+*/
   // 調理時間
+/*
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     // 調理時間
@@ -171,6 +174,8 @@ INSERT INTO
     $formated_seconds = ((intVal($cooking_time_array[0]) * 360) + ((intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
     continue;
   }
+*/
+/*
   // USES EP XP
   preg_match('/^([0-9]+) Uses \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
@@ -179,16 +184,19 @@ INSERT INTO
     $experience_point = $match[3];
     continue;
   }
+*/
+/*
   // 公開終了日
   preg_match('/^Ends: ([0-9]+\-[0-9]+\-[0-9]+)<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     $ends_date = $match[1];
     continue;
   }
+*/
   // セパレータ
+  /*
   preg_match('/^[\-]+<br\/><br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
-  /*
                 // レシピ登録処理
                 // 公開終了日フォーマット
                 if ($ends_date != 'null') {
@@ -262,9 +270,9 @@ INSERT INTO
                   $ends_date = 'null';
                   $resipe_foodstuff_join_array = array();
                 }
-    */
     continue;
   }
+  */
 }
 
 $close_flag = pg_close($link);
