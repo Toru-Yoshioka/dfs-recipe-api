@@ -92,7 +92,7 @@ WHERE
     $slot_no = $slot_foodstuff_array[0];
     $foodstuff_array = array_slice($slot_foodstuff_array, 1);
     // 食材名で dfs_foodstuff_mst を検索
-    $foodstuff_name = implode('-', $foodstuff_array);
+    $foodstuff_name = trim(implode('-', $foodstuff_array));
     $foodstuff_result = pg_query('
 SELECT
  dfm.foodstuff_seq,
