@@ -237,6 +237,11 @@ INSERT INTO
     }
     // 食材紐づけ登録
     for ($i = 0 ; $i < 10 ; $i++){
+      // 配列にスロットが存在するかチェック
+      $foodstuff_seq = "0";
+      if (array_key_exists($i, resipe_foodstuff_join_array)) {
+        $foodstuff_seq = $resipe_foodstuff_join_array[intVal($i)];
+      }
       $result = pg_query('
 INSERT INTO
   dfs_recipe_foodstuff_join
@@ -249,7 +254,7 @@ INSERT INTO
   ) VALUES (
   ' . $next_recipe_seq . ',
   ' . $i . ',
-  ' . $resipe_foodstuff_join_array[$i] . ',
+  ' . $foodstuff_seq . ',
   current_timestamp,
   current_timestamp
  )
