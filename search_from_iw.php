@@ -32,6 +32,7 @@ default:
 }
 print "--- PARAMETER END ---\n";
 */
+/*
 $json_string = file_get_contents('php://input');
 print $json_string . "\n";
 $obj = json_decode($json_string);
@@ -45,6 +46,12 @@ case 'array':
   break;
 default:
   print ($obj) . "\n";
+}
+*/
+$data = $_POST['items'];
+$item_array = array_unique(explode('/', $data));
+foreach ($item_array as $value) {
+  print "値 : " . $value . "\n";
 }
 
 print "--- PARAMETER END ---\n";
