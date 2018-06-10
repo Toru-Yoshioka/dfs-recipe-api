@@ -9,7 +9,7 @@ if (!$link) {
 }
 // 接続に成功
 
-print "--- REQUEST IW TEST ---\n";
+// print "--- REQUEST IW TEST ---\n";
 
 $recipe_seq = $_POST['recipe_seq'];
 // print "SEQ:" . $recipe_seq . "\n";
@@ -69,7 +69,7 @@ print $rows['foodstuff_seq_slot05'] . ":" . $rows['foodstuff_name_en_slot05'] . 
 print $rows['foodstuff_seq_slot06'] . ":" . $rows['foodstuff_name_en_slot06'] . "\n";
 print $rows['foodstuff_seq_slot07'] . ":" . $rows['foodstuff_name_en_slot07'] . "\n";
 print $rows['foodstuff_seq_slot08'] . ":" . $rows['foodstuff_name_en_slot08'] . "\n";
-print $rows['foodstuff_seq_slot09'] . ":" . $rows['foodstuff_name_en_slot09'] . "\n";
+print $rows['foodstuff_seq_slot09'] . ":" . $rows['foodstuff_name_en_slot09'];
 // print $rows['cooking_time_seconds'] . "\n";
 // print $rows['deliverable_uses'] . "\n";
 // print $rows['deliverable_energy'] . "\n";
@@ -82,5 +82,5 @@ $close_flag = pg_close($link);
 if ($close_flag){
   //     print('切断に成功しました。<br>');
 }
-print "--- PARAMETER END ---\n";
+// print "--- PARAMETER END ---\n";
 ?>
