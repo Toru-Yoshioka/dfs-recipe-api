@@ -69,19 +69,25 @@ foreach ($item_array as $value) {
   //print "値 : " . $str_grep . "\n";
 }
 
-print "--- PARAMETER END ---\n";
-
 $result = pg_query('
 SELECT
-  dfm.foodstuff_name_en
+  drm.recipe_name_en
 FROM
-  dfs_foodstuff_mst dfm
+  dfs_recipe_foodstuff_join drfj LEFT OUTER JOIN
+  dfs_recipe_mst drm ON drfj.recipe_seq = drm.recipe_seq
 WHERE
-  dfm.foodstuff_name_en in (
-    ' . $in_section . '
+  drfj.foodstuff_seq in (
+    SELECT
+      dfm.foodstuff_seq
+    FROM
+      dfs_foodstuff_mst dfm
+    WHERE
+      dfm.foodstuff_name_en in (
+        ' . $in_section . '
+      )
   )
 ORDER BY
-  dfm.foodstuff_name_en ASC
+  drm.recipe_name_en ASC
 ');
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
@@ -89,11 +95,12 @@ if (!$result) {
 $response = "";
 for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  print $rows['foodstuff_name_en'] . "\n";
+  print $rows['recipe_name_en'] . "\n";
 }
 
 $close_flag = pg_close($link);
 if ($close_flag){
   //     print('切断に成功しました。<br>');
 }
+print "--- PARAMETER END ---\n";
 ?>
