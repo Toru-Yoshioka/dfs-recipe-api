@@ -69,7 +69,7 @@ foreach ($item_array as $value) {
   //print "値 : " . $str_grep . "\n";
 }
 
-$result = pg_query('
+$query = '
 SELECT
   drm.recipe_name_en
 FROM
@@ -88,7 +88,10 @@ WHERE
   )
 ORDER BY
   drm.recipe_name_en ASC
-');
+';
+print "QUERY: " . $query . "\n";
+
+$result = pg_query($query);
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
 }
