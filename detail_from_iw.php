@@ -12,6 +12,7 @@ if (!$link) {
 print "--- REQUEST IW TEST ---\n";
 
 $recipe_seq = $_POST['recipe_seq'];
+print "SEQ:" . $recipe_seq . "\n";
 // レシピ詳細をクエリ
 $recipe_result = pg_query('
 SELECT
