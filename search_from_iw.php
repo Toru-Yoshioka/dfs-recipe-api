@@ -71,6 +71,7 @@ foreach ($item_array as $value) {
 
 $query = '
 SELECT
+  drm.recipe_seq,
   drm.recipe_name_en
 FROM
   dfs_recipe_foodstuff_join drfj LEFT OUTER JOIN
@@ -87,6 +88,7 @@ WHERE
       )
   )
 GROUP BY
+  drm.recipe_seq,
   drm.recipe_name_en
 ORDER BY
   drm.recipe_name_en ASC
@@ -100,7 +102,7 @@ if (!$result) {
 $response = "";
 for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  print $rows['recipe_name_en'] . "\n";
+  print $rows['recipe_seq'] . ":" . $rows['recipe_name_en'] . "\n";
 }
 
 $close_flag = pg_close($link);
