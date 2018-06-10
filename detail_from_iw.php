@@ -11,20 +11,9 @@ if (!$link) {
 
 print "--- REQUEST IW TEST ---\n";
 
-$in_section = "";
-$data = $_POST['items'];
-$item_array = array_unique(explode('/', $data));
-foreach ($item_array as $value) {
-  $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
-  if (strlen($in_section) > 0) {
-    $in_section = $in_section . ",'" . $str_grep . "'";
-  } else {
-    $in_section = "'" . $str_grep . "'";
-  } 
-  //print "値 : " . $str_grep . "\n";
-}
-  // レシピ詳細をクエリ
-  $recipe_result = pg_query('
+$recipe_seq = $_POST['recipe_seq'];
+// レシピ詳細をクエリ
+$recipe_result = pg_query('
 SELECT
   vrwn.recipe_seq,
   vrwn.recipe_name_en,
@@ -58,16 +47,43 @@ SELECT
 FROM
   view_recipe_with_name vrwn
 WHERE
-  vrwn.recipe_seq = ' . . '
+  vrwn.recipe_seq = ' . $recipe_seq . '
 ');
-  if (!$recipe_result) {
-    die('クエリーが失敗しました。'.pg_last_error());
-  }
+if (!$recipe_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
 
-$response = "";
-for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+for ($i = 0 ; $i < pg_num_rows($recipe_result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  print $rows['recipe_name_en'] . "\n";
+print $rows['recipe_seq'] . "\n";
+print $rows['recipe_name_en'] . "\n";
+print $rows['recipe_name_jp'] . "\n";
+print $rows['cooking_equipment_seq'] . "\n";
+print $rows['cookware_name_en'] . "\n";
+print $rows['foodstuff_seq_slot01'] . "\n";
+print $rows['foodstuff_name_en_slot01'] . "\n";
+print $rows['foodstuff_seq_slot02'] . "\n";
+print $rows['foodstuff_name_en_slot02'] . "\n";
+print $rows['foodstuff_seq_slot03'] . "\n";
+print $rows['foodstuff_name_en_slot03'] . "\n";
+print $rows['foodstuff_seq_slot04'] . "\n";
+print $rows['foodstuff_name_en_slot04'] . "\n";
+print $rows['foodstuff_seq_slot05'] . "\n";
+print $rows['foodstuff_name_en_slot05'] . "\n";
+print $rows['foodstuff_seq_slot06'] . "\n";
+print $rows['foodstuff_name_en_slot06'] . "\n";
+print $rows['foodstuff_seq_slot07'] . "\n";
+print $rows['foodstuff_name_en_slot07'] . "\n";
+print $rows['foodstuff_seq_slot08'] . "\n";
+print $rows['foodstuff_name_en_slot08'] . "\n";
+print $rows['foodstuff_seq_slot09'] . "\n";
+print $rows['foodstuff_name_en_slot09'] . "\n";
+print $rows['cooking_time_seconds'] . "\n";
+print $rows['deliverable_uses'] . "\n";
+print $rows['deliverable_energy'] . "\n";
+print $rows['experience_point'] . "\n";
+print $rows['update_date'] . "\n";
+print $rows['regist_date'] . "\n";
 }
 
 $close_flag = pg_close($link);
