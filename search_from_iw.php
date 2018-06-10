@@ -86,10 +86,12 @@ WHERE
         ' . $in_section . '
       )
   )
+GROUP BY
+  drm.recipe_name_en
 ORDER BY
   drm.recipe_name_en ASC
 ';
-print "QUERY: " . $query . "\n";
+// print "QUERY: " . $query . "\n";
 
 $result = pg_query($query);
 if (!$result) {
