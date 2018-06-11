@@ -12,6 +12,10 @@ if (!$link) {
 // print "--- REQUEST IW TEST ---\n";
 $in_section = "";
 $data = $_POST['items'];
+// キーワードありなし
+if (strlen($data) <= 0) {
+  die('');
+}
 $item_array = array_unique(explode('/', $data));
 // 有効食材絞り込み
 foreach ($item_array as $value) {
