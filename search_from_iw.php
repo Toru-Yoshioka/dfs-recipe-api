@@ -90,9 +90,10 @@ WHERE
   drfj.foodstuff_seq != 0
 ' . $exists_sections . '
 GROUP BY
-  drfj.recipe_seq
+  drm.recipe_seq,
+  drm.recipe_name_en
 ORDER BY
-  drfj.recipe_seq
+  drm.recipe_name_en ASC
 ';
 }
 $result = pg_query($query);
