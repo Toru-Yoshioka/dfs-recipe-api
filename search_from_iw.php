@@ -35,6 +35,7 @@ WHERE
     ' . $in_section . '
   )
 ';
+print ($query);
 $result = pg_query($query);
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
