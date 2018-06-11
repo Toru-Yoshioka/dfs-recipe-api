@@ -79,7 +79,7 @@ AND
       AND
       foodstuff_seq = ' . $value . ')';
   }
-  $query = pg_query('
+  $query = '
 SELECT
   drm.recipe_seq,
   drm.recipe_name_en
@@ -93,7 +93,7 @@ GROUP BY
   drfj.recipe_seq
 ORDER BY
   drfj.recipe_seq
-');
+';
 }
 $result = pg_query($query);
 if (!$result) {
