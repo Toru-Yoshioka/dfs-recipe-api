@@ -19,8 +19,8 @@ $item_array = array_unique(explode('/', $data));
 // 有効食材絞り込み
 foreach ($item_array as $value) {
   $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
-  $str_grep = strtr($str_grep, "(", "\\(");
-  $str_grep = strtr($str_grep, ")", "\\)");
+//  $str_grep = strtr($str_grep, "(", "\\(");
+//   $str_grep = strtr($str_grep, ")", "\\)");
   if (strlen($in_section) > 0) {
     $in_section = $in_section . ",'" . $str_grep . "'";
   } else {
@@ -37,7 +37,7 @@ WHERE
     ' . $in_section . '
   )
 ';
-print ($query);
+// print ($query);
 $result = pg_query($query);
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
