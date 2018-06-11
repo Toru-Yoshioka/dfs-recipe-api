@@ -55,14 +55,7 @@ FROM
   dfs_recipe_mst drm ON drfj.recipe_seq = drm.recipe_seq
 WHERE
   drfj.foodstuff_seq in (
-    SELECT
-      dfm.foodstuff_seq
-    FROM
-      dfs_foodstuff_mst dfm
-    WHERE
-      dfm.foodstuff_name_en in (
-        ' . implode(',', $valid_foodstuff_list) . '
-      )
+    ' . implode(',', $valid_foodstuff_list) . '
   )
 GROUP BY
   drm.recipe_seq,
