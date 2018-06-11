@@ -75,7 +75,7 @@ AND
     FROM
       dfs_recipe_foodstuff_join
     WHERE
-      recipe_seq = drfja.recipe_seq
+      recipe_seq = drfj.recipe_seq
       AND
       foodstuff_seq = ' . $value . ')';
   }
