@@ -10,55 +10,10 @@ if (!$link) {
 // 接続に成功
 
 print "--- REQUEST IW TEST ---\n";
-/**
- * @author Wouter Hobble
- * @copyright 2008
- */
- 
-/*
-foreach ($_SERVER as $k => $v)
-{
-	if( substr($k, 0, 5) == 'HTTP_')
-	{
-		print "\n". $k. "\t". $v;
-	}
-}
-*/
-
-/*
-$request = $_POST['ITEM'];
-print "TYPE: " . gettype($request) . "\n";
-switch (gettype($request)) {
-case 'array':
-  foreach ($request as $value) {
-    echo "値 : " . $value . "\n";
-    echo "\n";
-  }
-  break;
-default:
-  print ($request) . "\n";
-}
-print "--- PARAMETER END ---\n";
-*/
-/*
-$json_string = file_get_contents('php://input');
-print $json_string . "\n";
-$obj = json_decode($json_string);
-print "TYPE: " . gettype($obj) . "\n";
-switch (gettype($obj)) {
-case 'array':
-  foreach ($obj as $value) {
-    echo "値 : " . $value . "\n";
-    echo "\n";
-  }
-  break;
-default:
-  print ($obj) . "\n";
-}
-*/
 $in_section = "";
 $data = $_POST['items'];
 $item_array = array_unique(explode('/', $data));
+// 有効食材絞り込み
 foreach ($item_array as $value) {
   $str_grep = preg_replace('/^(.+)[ ]+\(?[0-9]+\)?/', '$1', $value);
   if (strlen($in_section) > 0) {
@@ -66,10 +21,32 @@ foreach ($item_array as $value) {
   } else {
     $in_section = "'" . $str_grep . "'";
   } 
-  //print "値 : " . $str_grep . "\n";
+}
+$query = '
+SELECT
+  dfm.foodstuff_seq
+FROM
+  dfs_foodstuff_mst dfm
+WHERE
+  dfm.foodstuff_name_en in (
+    ' . $in_section . '
+  )
+';
+$result = pg_query($query);
+if (!$result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+$valid_foodstuff_list = array();
+for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
+  $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+  $valid_foodstuff_list[] = $rows['foodstuff_seq'];
 }
 
-$query = '
+// あいまい検索・絞り込み検索
+if ($_POST['search_mode'] == "0") {
+  // あいまい検索
+
+  $query = '
 SELECT
   drm.recipe_seq,
   drm.recipe_name_en
@@ -84,7 +61,7 @@ WHERE
       dfs_foodstuff_mst dfm
     WHERE
       dfm.foodstuff_name_en in (
-        ' . $in_section . '
+        ' . implode(',', $valid_foodstuff_list) . '
       )
   )
 GROUP BY
@@ -93,8 +70,38 @@ GROUP BY
 ORDER BY
   drm.recipe_name_en ASC
 ';
-// print "QUERY: " . $query . "\n";
-
+} else {
+  // 絞り込み検索
+  $exists_sections = "";
+  foreach ($valid_foodstuff_list as $value) {
+    $exists_sections = $exists_sections . '
+AND
+  EXISTS (
+    SELECT
+      null
+    FROM
+      dfs_recipe_foodstuff_join
+    WHERE
+      recipe_seq = drfja.recipe_seq
+      AND
+      foodstuff_seq = ' . $value . ')';
+  }
+  $query = pg_query('
+SELECT
+  drm.recipe_seq,
+  drm.recipe_name_en
+FROM
+  dfs_recipe_foodstuff_join drfj LEFT OUTER JOIN
+  dfs_recipe_mst drm ON drfj.recipe_seq = drm.recipe_seq
+WHERE
+  drfj.foodstuff_seq != 0
+' . $exists_sections . '
+GROUP BY
+  drfj.recipe_seq
+ORDER BY
+  drfj.recipe_seq
+');
+}
 $result = pg_query($query);
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());

@@ -69,7 +69,7 @@ AND
       AND
       foodstuff_seq = ' . $value . ')';
       }
-      // あいまい検索レシピSeq取得
+      // 絞り込み検索レシピSeq取得
       $recipe_seq_result = pg_query('
 SELECT
   drfja.recipe_seq
