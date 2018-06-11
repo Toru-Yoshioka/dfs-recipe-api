@@ -9,7 +9,7 @@ if (!$link) {
 }
 // 接続に成功
 
-print "--- REQUEST IW TEST ---\n";
+// print "--- REQUEST IW TEST ---\n";
 $in_section = "";
 $data = $_POST['items'];
 $item_array = array_unique(explode('/', $data));
@@ -110,5 +110,5 @@ $close_flag = pg_close($link);
 if ($close_flag){
   //     print('切断に成功しました。<br>');
 }
-print "--- PARAMETER END ---\n";
+// print "--- PARAMETER END ---\n";
 ?>
