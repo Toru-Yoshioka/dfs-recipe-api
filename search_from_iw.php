@@ -1,5 +1,4 @@
 <?php header("content-type: text/plain; charset=utf-8"); ?>
-受信したヘッダ:
 <?php
 date_default_timezone_set('Asia/Tokyo');
 $conn = "host=ec2-23-23-248-192.compute-1.amazonaws.com dbname=dl8app8ukml19 user=zukuhaourmbbsk password=f9e66d533b3f6cdae3d67c88e7baac7bc05f380fcaf047471e726d3b332ef74a";
