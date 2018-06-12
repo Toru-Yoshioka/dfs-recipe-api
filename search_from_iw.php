@@ -67,7 +67,6 @@ FROM
   dfs_recipe_foodstuff_join drfj LEFT OUTER JOIN
   dfs_recipe_mst drm ON drfj.recipe_seq = drm.recipe_seq
   ' . $where_section . '
-  )
 GROUP BY
   drm.recipe_seq,
   drm.recipe_name_en
