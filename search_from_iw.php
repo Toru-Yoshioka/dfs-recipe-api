@@ -69,6 +69,7 @@ GROUP BY
 ORDER BY
   drm.recipe_name_en ASC
 ';
+peint $query;
 } else {
   // 絞り込み検索
   $exists_sections = "";
