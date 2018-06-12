@@ -47,11 +47,13 @@ for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
   $valid_foodstuff_list[] = $rows['foodstuff_seq'];
 }
-
+// 有効食材数が 0 件だったら空を返す
+if (count($valid_foodstuff_list) <= 0) {
+  die();
+}
 // あいまい検索・絞り込み検索
 if ($_POST['search_mode'] == "0") {
   // あいまい検索
-
   $query = '
 SELECT
   drm.recipe_seq,
@@ -69,7 +71,6 @@ GROUP BY
 ORDER BY
   drm.recipe_name_en ASC
 ';
-print $query;
 } else {
   // 絞り込み検索
   $exists_sections = "";
