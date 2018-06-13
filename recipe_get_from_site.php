@@ -35,6 +35,38 @@ if (!$link) {
   die('接続失敗です。'.pg_last_error());
 }
 // 接続に成功
+// DB 初期化
+$init_result = pg_query('
+DELETE FROM dfs_recipe_mst;
+');
+if (!$init_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+$init_result = pg_query('
+DELETE FROM dfs_foodstuff_mst;
+');
+if (!$init_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+$init_result = pg_query('
+DELETE FROM dfs_recipe_foodstuff_join;
+');
+if (!$init_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+$init_result = pg_query('
+select setval (\'dfs_recipe_seq\', 1, false);
+');
+if (!$init_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+$init_result = pg_query('
+select setval (\'dfs_foodstuff_seq\', 1, false);
+');
+if (!$init_result) {
+  die('クエリーが失敗しました。'.pg_last_error());
+}
+
 $url = "https://www.digitalfarmsystem.com/dfs-recipes/";
 $html = file_get_contents($url);
 
