@@ -113,7 +113,7 @@ if (!$result) {
 $response = "";
 for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   $rows = pg_fetch_array($result, NULL, PGSQL_ASSOC);
-  print $rows['recipe_seq'] . ":" . $rows['recipe_name_en'] . "\n";
+  print $rows['recipe_seq'] . "//" . $rows['recipe_name_en'] . "\n";
 }
 
 $close_flag = pg_close($link);
