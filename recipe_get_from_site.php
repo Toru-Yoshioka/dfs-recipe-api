@@ -193,7 +193,7 @@ INSERT INTO
     continue;
   }
   // USES EP XP
-  preg_match('/^([0-9]+) Uses \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
+  preg_match('/^([0-9]+) Uses? \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
     $deliverable_uses = $match[1];
     $deliverable_energy = $match[2];
