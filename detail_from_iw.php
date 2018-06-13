@@ -55,18 +55,18 @@ if (!$recipe_result) {
 
 for ($i = 0 ; $i < pg_num_rows($recipe_result) ; $i++){
   $rows = pg_fetch_array($recipe_result, NULL, PGSQL_ASSOC);
-print $rows['recipe_seq'] . ":" . $rows['recipe_name_en'] . "\n";
+print $rows['recipe_seq'] . "//" . $rows['recipe_name_en'] . "\n";
 // print $rows['recipe_name_jp'] . "\n";
-print $rows['cooking_equipment_seq'] . ":" . $rows['cookware_name_en'] . "\n";
-print $rows['foodstuff_seq_slot01'] . ":" . $rows['foodstuff_name_en_slot01'] . "\n";
-print $rows['foodstuff_seq_slot02'] . ":" . $rows['foodstuff_name_en_slot02'] . "\n";
-print $rows['foodstuff_seq_slot03'] . ":" . $rows['foodstuff_name_en_slot03'] . "\n";
-print $rows['foodstuff_seq_slot04'] . ":" . $rows['foodstuff_name_en_slot04'] . "\n";
-print $rows['foodstuff_seq_slot05'] . ":" . $rows['foodstuff_name_en_slot05'] . "\n";
-print $rows['foodstuff_seq_slot06'] . ":" . $rows['foodstuff_name_en_slot06'] . "\n";
-print $rows['foodstuff_seq_slot07'] . ":" . $rows['foodstuff_name_en_slot07'] . "\n";
-print $rows['foodstuff_seq_slot08'] . ":" . $rows['foodstuff_name_en_slot08'] . "\n";
-print $rows['foodstuff_seq_slot09'] . ":" . $rows['foodstuff_name_en_slot09'] . "\n";
+print $rows['cooking_equipment_seq'] . "//" . $rows['cookware_name_en'] . "\n";
+print $rows['foodstuff_seq_slot01'] . "//" . $rows['foodstuff_name_en_slot01'] . "\n";
+print $rows['foodstuff_seq_slot02'] . "//" . $rows['foodstuff_name_en_slot02'] . "\n";
+print $rows['foodstuff_seq_slot03'] . "//" . $rows['foodstuff_name_en_slot03'] . "\n";
+print $rows['foodstuff_seq_slot04'] . "//" . $rows['foodstuff_name_en_slot04'] . "\n";
+print $rows['foodstuff_seq_slot05'] . "//" . $rows['foodstuff_name_en_slot05'] . "\n";
+print $rows['foodstuff_seq_slot06'] . "//" . $rows['foodstuff_name_en_slot06'] . "\n";
+print $rows['foodstuff_seq_slot07'] . "//" . $rows['foodstuff_name_en_slot07'] . "\n";
+print $rows['foodstuff_seq_slot08'] . "//" . $rows['foodstuff_name_en_slot08'] . "\n";
+print $rows['foodstuff_seq_slot09'] . "//" . $rows['foodstuff_name_en_slot09'] . "\n";
 print $rows['cooking_time_seconds'] . "\n";
 print $rows['deliverable_uses'] . "\n";
 print $rows['deliverable_energy'] . "\n";
