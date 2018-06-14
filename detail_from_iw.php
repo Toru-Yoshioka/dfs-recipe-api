@@ -67,7 +67,11 @@ print $rows['foodstuff_seq_slot06'] . "//" . $rows['foodstuff_name_en_slot06'] .
 print $rows['foodstuff_seq_slot07'] . "//" . $rows['foodstuff_name_en_slot07'] . "\n";
 print $rows['foodstuff_seq_slot08'] . "//" . $rows['foodstuff_name_en_slot08'] . "\n";
 print $rows['foodstuff_seq_slot09'] . "//" . $rows['foodstuff_name_en_slot09'] . "\n";
-print $rows['cooking_time_seconds'] . "\n";
+$cooking_time_seconds = intVal($rows['cooking_time_seconds']);
+$cooking_hours = $cooking_time_seconds / 3600;
+$cooking_minutes = str_pad(($cooking_time_seconds - ($cooking_hours * 3600)) / 60, 2, 0, STR_PAD_LEFT);
+$cooking_seconds = str_pad($cooking_time_seconds - ($cooking_hours * 3600) - ($cooking_minutes * 60), 2, 0, STR_PAD_LEFT);
+print $cooking_hours . ":" . $cooking_minutes . ":" . $cooking_seconds . "\n";
 print $rows['deliverable_uses'] . "\n";
 print $rows['deliverable_energy'] . "\n";
 print $rows['experience_point'];
