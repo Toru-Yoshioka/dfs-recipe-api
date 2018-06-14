@@ -69,7 +69,7 @@ print $rows['foodstuff_seq_slot08'] . "//" . $rows['foodstuff_name_en_slot08'] .
 print $rows['foodstuff_seq_slot09'] . "//" . $rows['foodstuff_name_en_slot09'] . "\n";
 $cooking_time_seconds = intVal($rows['cooking_time_seconds']);
 $cooking_hours = floor($cooking_time_seconds / 3600);
-$cooking_minutes = str_pad(($cooking_time_seconds - ($cooking_hours * 3600)) / 60, 2, 0, STR_PAD_LEFT);
+$cooking_minutes = str_pad(floor(($cooking_time_seconds - ($cooking_hours * 3600)) / 60), 2, 0, STR_PAD_LEFT);
 $cooking_seconds = str_pad($cooking_time_seconds - ($cooking_hours * 3600) - ($cooking_minutes * 60), 2, 0, STR_PAD_LEFT);
 print $cooking_hours . ":" . $cooking_minutes . ":" . $cooking_seconds . "\n";
 print $rows['deliverable_uses'] . "\n";
