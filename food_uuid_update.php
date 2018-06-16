@@ -43,16 +43,17 @@ if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
 }
 ?>
-    <h3>DFS UUID 登録フォーム 登録完了</h3>
+    <h3>DFS レシピ/食材 UUID 登録フォーム 登録完了</h3>
       <h4>対象素材</h4>
       <?php print($dst_name); ?><br/>
+      <br/>
       アイコンUUID：<br/>
       <?php print($icon_uuid); ?><br/>
       写真UUID：<br/>
       <?php print($pict_uuid); ?><br/>
       <br/>
       <br/>
-      <a href="./uuid_form.php">登録フォームへ戻る</a>
+      <a href="./food_uuid_form.php">登録フォームへ戻る</a>
 <?php
   $close_flag = pg_close($link);
   if ($close_flag){
