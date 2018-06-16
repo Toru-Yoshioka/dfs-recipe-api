@@ -31,7 +31,9 @@ if (!$link) {
     <h3>DFS UUID 登録フォーム</h3>
 <?php
   // 編集する素材を選択
-$selected_name = $_GET['select'];
+$selected_name = $_POST['selected_name'];
+$selected_icon_uuid = $_POST['selected_icon_uuid'];
+$selected_pict_uuid = $_POST['selected_pict_uuid'];
   // 食材一覧取得
   $uuid_result = pg_query('
 SELECT
@@ -68,6 +70,18 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
+    <form method="post" action="./uuid_update.php">
+      <h4>対象素材</h4>
+      <?php print($selected_name); ?>
+      <input name="DST_NAME" type="hidden" value="<?php print($selected_name); ?>"/><br/><br/>      
+      アイコンUUID：<br/>
+      <input type="text" name="ICON_UUID" size="40" value="<?php print($selected_icon_uuid); ?>"/><br/>      
+      写真UUID：<br/>
+      <input type="text" name="PICT_UUID" size="40" value="<?php print($selected_pict_uuid); ?>"/><br/>      
+      <br/>
+      <br/>
+      <input type="submit" value="　更　新　"/>
+    </form>
     <table class="border_outside">
       <tr class="border_inside">
         <th>対象素材名</th>
@@ -91,7 +105,14 @@ ORDER BY
     }
 ?>
       <tr class="border_inside">
-        <td><a href="./uuid_form.php?select=<?php print($dst_name); ?>"><?php print($dst_name); ?></a></td>
+        <td>
+          <form method="post" action="./uuid_form.php">
+            <input type="submit" name="select_sunmit" value="<?php print($dst_name); ?>"/>
+         	<input type="hidden" name="selected_name" value="<?php print($dst_name); ?>"/>
+         	<input type="hidden" name="selected_icon_uuid" value="<?php print($icon_uuid); ?>"/>
+         	<input type="hidden" name="selected_pict_uuid" value="<?php print($pict_uuid); ?>"/>
+          </form>
+        </td>
         <td><?php print($icon_uuid); ?></td>
         <td><?php print($pict_uuid); ?></td>
         <td><?php print($update_date); ?></td>
@@ -101,17 +122,5 @@ ORDER BY
   }
 ?>
     </table>
-    <form method="post" action="./uuid_update.php">
-      <h4>対象素材</h4>
-      <?php print($selected_name); ?>
-      <input name="DST_NAME" type="hidden" value="<?php print($selected_name); ?>"/><br/>      
-      アイコンUUID：<br/>
-      <input type="text" name="ICON_UUID" size="40" value="<?php print($selected_icon_uuid); ?>"/><br/>      
-      写真UUID：<br/>
-      <input type="text" name="PICT_UUID" size="40" value="<?php print($selected_pict_uuid); ?>"/><br/>      
-      <br/>
-      <br/>
-      <input type="submit" value="　更　新　"/>
-    </form>
   </body>
 </html>
