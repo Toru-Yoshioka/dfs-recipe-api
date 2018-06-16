@@ -57,7 +57,7 @@ FROM
           dfs_recipe_mst drm
       ) dst
     GROUP BY
-      dst.dat_name
+      dst.dst_name
   ) dst_mst
   LEFT OUTER JOIN dfs_uuid_join duj
   ON dst_mst.dst_name = duj.dst_name
