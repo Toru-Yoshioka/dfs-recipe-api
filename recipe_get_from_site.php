@@ -257,7 +257,7 @@ INSERT INTO
       die('クエリーが失敗しました。'.pg_last_error());
     }
     // 食材紐づけ登録
-    for ($i = 0 ; $i < 10 ; $i++){
+    for ($i = 1 ; $i < 10 ; $i++){
       // 配列にスロットが存在するかチェック
       $foodstuff_seq = "0";
       if (array_key_exists($i, $resipe_foodstuff_join_array)) {
