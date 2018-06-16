@@ -53,10 +53,10 @@ ORDER BY
     die('クエリーが失敗しました。'.pg_last_error());
   }
 ?>
-    <form method="post" action="./food_uuid_update.php">
-      <input type="radio" name="ADD" value="1"/> 新規追加&nbsp;&nbsp;
-      <input type="radio" name="MODIFY" value="2"/> 更新&nbsp;&nbsp;
-      <input type="radio" name="REMOVE" value="9"/> 削除<br/>
+    <form method="post" action="./cookware_uuid_update.php">
+      <input type="radio" name="MODE" value="1"/> 新規追加&nbsp;&nbsp;
+      <input type="radio" name="MODE" value="2" checked="true"/> 更新&nbsp;&nbsp;
+      <input type="radio" name="MODE" value="9"/> 削除<br/>
       <h4>対象調理器具</h4>
       <?php print($selected_name); ?>
       <input name="DST_NAME" type="hidden" value="<?php print($selected_name); ?>"/><br/><br/>      
