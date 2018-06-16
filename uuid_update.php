@@ -19,10 +19,19 @@ $pict_uuid = $_POST['PICT_UUID'];
 
 $result = pg_query('
 UPDATE
-  dfs_uuid_join SET icon_uuid = \'' . $icon_uuid . '\', pict_uuid = \'' . $pict_uuid . '\', update_date = current_timestamp WHERE dst_name = \'' . $dst_name . '\';
-INSERT INTO dfs_uuid_join (dst_name, icon_uuid, pict_uuid, update_date, regist_date)
-       SET icon_uuid = \'' . $icon_uuid . '\', pict_uuid = \'' . $pict_uuid . '\', update_date = current_timestamp, regist_date = current_timestamp
-       WHERE NOT EXISTS (SELECT 1 FROM dfs_uuid_join WHERE dst_name = \'' . $dst_name . '\');
+  dfs_uuid_join
+SET
+  icon_uuid = \'' . $icon_uuid . '\',
+  pict_uuid = \'' . $pict_uuid . '\',
+  update_date = current_timestamp
+WHERE dst_name = \'' . $dst_name . '\';
+INSERT INTO
+  dfs_uuid_join
+    (dst_name, icon_uuid, pict_uuid, update_date, regist_date)
+  VALUES
+    (\'' . $dst_name . '\', \'' . $icon_uuid . '\', \'' . $pict_uuid . '\', update_date = current_timestamp, regist_date = current_timestamp)
+WHERE
+  NOT EXISTS (SELECT 1 FROM dfs_uuid_join WHERE dst_name = \'' . $dst_name . '\');
 ');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
