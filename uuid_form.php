@@ -31,7 +31,7 @@ if (!$link) {
     <h3>DFS UUID 登録フォーム</h3>
 <?php
   // 編集する素材を選択
-$selected_name = $_POST['select'];
+$selected_name = $_GET['select'];
   // 食材一覧取得
   $uuid_result = pg_query('
 SELECT
