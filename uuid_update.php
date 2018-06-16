@@ -34,10 +34,10 @@ $result = pg_query('
 INSERT INTO
   dfs_uuid_join
     (dst_name, icon_uuid, pict_uuid, update_date, regist_date)
-  VALUES
-    (\'' . $dst_name . '\', \'' . $icon_uuid . '\', \'' . $pict_uuid . '\', current_timestamp, current_timestamp)
-WHERE
-  NOT EXISTS (SELECT 1 FROM dfs_uuid_join WHERE dst_name = \'' . $dst_name . '\')
+  SELECT
+    \'' . $dst_name . '\', \'' . $icon_uuid . '\', \'' . $pict_uuid . '\', current_timestamp, current_timestamp
+  WHERE
+    NOT EXISTS (SELECT 1 FROM dfs_uuid_join WHERE dst_name = \'' . $dst_name . '\')
 ');
 if (!$result) {
     die('クエリーが失敗しました。'.pg_last_error());
