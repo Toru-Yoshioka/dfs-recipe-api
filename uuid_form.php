@@ -38,8 +38,8 @@ SELECT
   duj.dst_name,
   duj.icon_uuid,
   duj.pict_uuid,
-  dfm.update_date,
-  dfm.regist_date
+  duj.update_date,
+  duj.regist_date
 FROM
  dfs_uuid_join duj
 ORDER BY
