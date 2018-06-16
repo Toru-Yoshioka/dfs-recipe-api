@@ -24,12 +24,13 @@ SET
   icon_uuid = \'' . $icon_uuid . '\',
   pict_uuid = \'' . $pict_uuid . '\',
   update_date = current_timestamp
-WHERE dst_name = \'' . $dst_name . '\';
+WHERE
+  dst_name = \'' . $dst_name . '\';
 INSERT INTO
   dfs_uuid_join
     (dst_name, icon_uuid, pict_uuid, update_date, regist_date)
   VALUES
-    (\'' . $dst_name . '\', \'' . $icon_uuid . '\', \'' . $pict_uuid . '\', update_date = current_timestamp, regist_date = current_timestamp)
+    (\'' . $dst_name . '\', \'' . $icon_uuid . '\', \'' . $pict_uuid . '\', current_timestamp, current_timestamp)
 WHERE
   NOT EXISTS (SELECT 1 FROM dfs_uuid_join WHERE dst_name = \'' . $dst_name . '\');
 ');
