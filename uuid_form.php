@@ -107,16 +107,16 @@ ORDER BY
       <tr class="border_inside">
         <td>
           <a href="javascript:void(0);" onclick="javascript:document.getElementById('<?php print($dst_name); ?>').submit();"><?php print($dst_name); ?></a>
-          <form id="<?php print($dst_name); ?>" method="post" action="./uuid_form.php">
-         	<input type="hidden" name="selected_name" value="<?php print($dst_name); ?>"/>
-         	<input type="hidden" name="selected_icon_uuid" value="<?php print($icon_uuid); ?>"/>
-         	<input type="hidden" name="selected_pict_uuid" value="<?php print($pict_uuid); ?>"/>
-          </form>
         </td>
         <td><?php print($icon_uuid); ?></td>
         <td><?php print($pict_uuid); ?></td>
         <td><?php print($update_date); ?></td>
         <td><?php print($regist_date); ?></td>
+        <form id="<?php print($dst_name); ?>" method="post" action="./uuid_form.php">
+          <input type="hidden" name="selected_name" value="<?php print($dst_name); ?>"/>
+          <input type="hidden" name="selected_icon_uuid" value="<?php print($icon_uuid); ?>"/>
+          <input type="hidden" name="selected_pict_uuid" value="<?php print($pict_uuid); ?>"/>
+        </form>
       </tr>
 <?php
   }
