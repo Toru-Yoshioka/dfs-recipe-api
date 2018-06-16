@@ -54,8 +54,10 @@ FROM
   ) dst
   LEFT OUTER JOIN dfs_uuid_join duj
   ON dst.dst_name = duj.dst_name
+GROUP BY
+  dst.dst_name
 ORDER BY
- dst.dst_name ASC
+  dst.dst_name ASC
 ');
   if (!$uuid_result) {
     die('クエリーが失敗しました。'.pg_last_error());
