@@ -93,7 +93,7 @@ ORDER BY
         <td><?php print($pict_uuid); ?></td>
         <td><?php print($update_date); ?></td>
         <td><?php print($regist_date); ?></td>
-        <form id="<?php print($dst_name); ?>" method="post" action="./cookware_uuid_form.php">
+        <form id="<?php print($cookware_name_en); ?>" method="post" action="./cookware_uuid_form.php">
           <input type="hidden" name="selected_name" value="<?php print($cookware_name_en); ?>"/>
           <input type="hidden" name="selected_icon_uuid" value="<?php print($icon_uuid); ?>"/>
           <input type="hidden" name="selected_pict_uuid" value="<?php print($pict_uuid); ?>"/>
