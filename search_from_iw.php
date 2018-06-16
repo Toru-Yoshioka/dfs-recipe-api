@@ -116,8 +116,6 @@ for ($i = 0 ; $i < pg_num_rows($result) ; $i++){
   print $rows['recipe_seq'] . "//" . $rows['recipe_name_en'] . "\n";
 }
 
-print "DEBUG: " . $in_section;
-
 $close_flag = pg_close($link);
 if ($close_flag){
   //     print('切断に成功しました。<br>');
