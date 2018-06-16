@@ -35,7 +35,7 @@ $selected_name = $_POST['select'];
   // 食材一覧取得
   $uuid_result = pg_query('
 SELECT
-  dst.dst_name,
+  dst_mst.dst_name,
   duj.icon_uuid,
   duj.pict_uuid,
   duj.update_date,
@@ -43,21 +43,26 @@ SELECT
 FROM
   (
     SELECT
-      dfm.foodstuff_name_en  AS dst_name
+      dst.dst_name
     FROM
-      dfs_foodstuff_mst dfm
-    UNION ALL
-    SELECT
-      drm.recipe_name_en AS dst_name
-    FROM
-      dfs_recipe_mst drm
-  ) dst
+      (
+        SELECT
+          dfm.foodstuff_name_en  AS dst_name
+        FROM
+          dfs_foodstuff_mst dfm
+        UNION ALL
+        SELECT
+          drm.recipe_name_en AS dst_name
+        FROM
+          dfs_recipe_mst drm
+      ) dst
+    GROUP BY
+      dst.dat_name
+  ) dst_mst
   LEFT OUTER JOIN dfs_uuid_join duj
-  ON dst.dst_name = duj.dst_name
-GROUP BY
-  dst.dst_name
+  ON dst_mst.dst_name = duj.dst_name
 ORDER BY
-  dst.dst_name ASC
+  dst_mst.dst_name ASC
 ');
   if (!$uuid_result) {
     die('クエリーが失敗しました。'.pg_last_error());
