@@ -65,7 +65,7 @@ ORDER BY
     $pict_uuid = $rows['pict_uuid'];
     $update_date = $rows['update_date'];
     $regist_date = $rows['regist_date'];
-    // 選択した対象素材だったら変数に保持
+    // 選択した対象素材だったら変数に保持する
     if ($dst_name == $selected_name) {
       $selected_icon_uuid = $icon_uuid;
       $selected_pict_uuid = $pict_uuid;
