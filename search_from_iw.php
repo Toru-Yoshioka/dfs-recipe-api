@@ -125,7 +125,7 @@ FROM
 WHERE
   drfj.foodstuff_seq != 0
   AND
-  LOWER(drm.recipe_name_en) like \'%' . mb_strtolower($data) . '%\'
+  LOWER(drm.recipe_name_en) like \'%' . strtolower($data) . '%\'
 GROUP BY
   drm.recipe_seq,
   drm.recipe_name_en
