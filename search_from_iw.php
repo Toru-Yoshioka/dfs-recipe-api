@@ -11,9 +11,7 @@ if (!$link) {
 // print "--- REQUEST IW TEST ---\n";
 $in_section = "";
 $data = $_POST['items'];
-print $data;
 $search_mode = $_POST['search_mode'];
-print $search_mode;
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
@@ -113,26 +111,56 @@ ORDER BY
 } else {
   // チャット検索
   if (intVal($search_mode) == 2) {
+    // あいまい検索
+    $lower_data = strtolower($data);
+    $query = '
+SELECT
+  vrwn.recipe_seq,
+  vrwn.recipe_name_en
+FROM
+  view_recipe_with_name vrwn
+WHERE
+  LOWER(vrwn.recipe_name_en) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot01) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot02) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot03) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot04) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot05) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot06) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot07) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot08) like \'%' . $lower_data . '%\'
+  OR
+  LOWER(vrwn.foodstuff_name_en_slot09) like \'%' . $lower_data . '%\'
+GROUP BY
+  vrwn.recipe_seq,
+  vrwn.recipe_name_en
+ORDER BY
+  vrwn.recipe_name_en ASC
+';
   } else if (intVal($search_mode) == 3) {
     // レシピ名検索
     $query = '
 SELECT
-  drm.recipe_seq,
-  drm.recipe_name_en
+  vrwn.recipe_seq,
+  vrwn.recipe_name_en
 FROM
-  dfs_recipe_foodstuff_join drfj LEFT OUTER JOIN
-  dfs_recipe_mst drm ON drfj.recipe_seq = drm.recipe_seq
+  view_recipe_with_name vrwn
 WHERE
-  drfj.foodstuff_seq != 0
-  AND
-  LOWER(drm.recipe_name_en) like \'%' . strtolower($data) . '%\'
+  LOWER(vrwn.recipe_name_en) like \'%' . strtolower($data) . '%\'
 GROUP BY
-  drm.recipe_seq,
-  drm.recipe_name_en
+  vrwn.recipe_seq,
+  vrwn.recipe_name_en
 ORDER BY
-  drm.recipe_name_en ASC
+  vrwn.recipe_name_en ASC
 ';
-    print $query;
   }
 }
 $result = pg_query($query);
