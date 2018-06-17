@@ -123,7 +123,7 @@ FROM
 WHERE
   drfj.foodstuff_seq != 0
   AND
-  drm.recipe_name_en like \'%' . $data . '\'
+  drm.recipe_name_en like \'%' . $data . '%\'
 GROUP BY
   drm.recipe_seq,
   drm.recipe_name_en
