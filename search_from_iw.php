@@ -11,7 +11,9 @@ if (!$link) {
 // print "--- REQUEST IW TEST ---\n";
 $in_section = "";
 $data = $_POST['items'];
+print $data;
 $search_mode = $_POST['search_mode'];
+print $search_mode;
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
