@@ -11,8 +11,16 @@ if (!$link) {
 // print "--- REQUEST IW TEST ---\n";
 
 $recipe_seq = $_POST['recipe_seq'];
+$recipe_name = $_POST['recipe_name'];
 // print "SEQ:" . $recipe_seq . "\n";
 // レシピ詳細をクエリ
+if ($recipe_name != "") {
+  // レシピ名の場合
+  $search_key = 'vrwn.recipe_name_en = \'' . $recipe_name . '\'';
+} else {
+  // レシピ名じゃない場合
+  $search_key = 'vrwn.recipe_seq = ' . $recipe_seq;
+}
 $recipe_result = pg_query('
 SELECT
   vrwn.recipe_seq,
@@ -66,8 +74,8 @@ SELECT
 FROM
   view_recipe_with_name vrwn
 WHERE
-  vrwn.recipe_seq = ' . $recipe_seq . '
-');
+' . $search_key
+);
 if (!$recipe_result) {
   die('クエリーが失敗しました。'.pg_last_error());
 }
