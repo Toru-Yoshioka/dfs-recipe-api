@@ -130,6 +130,7 @@ GROUP BY
 ORDER BY
   drm.recipe_name_en ASC
 ';
+    print $query;
   }
 }
 $result = pg_query($query);
