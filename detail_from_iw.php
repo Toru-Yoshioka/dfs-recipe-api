@@ -17,6 +17,7 @@ $recipe_result = pg_query('
 SELECT
   vrwn.recipe_seq,
   vrwn.recipe_name_en,
+  vrwn.recipe_pict_uuid,
   vrwn.recipe_name_jp,
   vrwn.cooking_equipment_seq,
   vrwn.cookware_uuids,
