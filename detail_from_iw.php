@@ -74,7 +74,7 @@ if (!$recipe_result) {
 
 for ($i = 0 ; $i < pg_num_rows($recipe_result) ; $i++){
   $rows = pg_fetch_array($recipe_result, NULL, PGSQL_ASSOC);
-print $rows['recipe_seq'] . "//" . $rows['recipe_name_en'] . "\n";
+print $rows['recipe_seq'] . "//" . $rows['recipe_name_en'] . "//" . $rows['recipe_pict_uuid'] . "\n";
 // print $rows['recipe_name_jp'] . "\n";
 print $rows['cooking_equipment_seq'] . "//" . $rows['cookware_uuids'] . "\n";
 print $rows['foodstuff_seq_slot01'] . "//" . $rows['foodstuff_name_en_slot01'] . "//" . $rows['foodstuff_icon_uuid_slot01'] . "//" . $rows['foodstuff_pict_uuid_slot01'] . "\n";
