@@ -110,8 +110,8 @@ ORDER BY
 
 } else {
   // チャット検索
-  if (intVal($seatch_mode) == 2) {
-  } else if (intVal($seatch_mode) == 3) {
+  if (intVal($search_mode) == 2) {
+  } else if (intVal($search_mode) == 3) {
     // レシピ名検索
     $query = '
 SELECT
