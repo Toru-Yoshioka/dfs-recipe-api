@@ -1,6 +1,19 @@
 <?php header("content-type: text/plain; charset=utf-8"); ?>
 <?php
 date_default_timezone_set('Asia/Tokyo');
+// トライアル判定
+$trial_flg = $_POST['trial_flg'];
+print $trial_flg;
+if ($trial_flg == "1") {
+  print "TRIAL MODE";
+  // トライアル版アクセスの場合
+  $now_datetime = new DateTime()->format('Y-m-d H:i:s');
+  $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
+  if ($now_datetime > $target_datetime){
+    print "TRIAL FINISHED";
+    exit();
+  }
+}
 $conn = "host=ec2-23-23-248-192.compute-1.amazonaws.com dbname=dl8app8ukml19 user=zukuhaourmbbsk password=f9e66d533b3f6cdae3d67c88e7baac7bc05f380fcaf047471e726d3b332ef74a";
 $link = pg_connect($conn);
 if (!$link) {
@@ -12,19 +25,6 @@ if (!$link) {
 $in_section = "";
 $data = pg_escape_string($_POST['items']);
 $search_mode = pg_escape_string($_POST['search_mode']);
-$trial_flg = $_POST['trial_flg'];
-print $trial_flg;
-if ($trial_flg == "1") {
-  print "TRIAL MODE";
-  // トライアル版アクセスの場合
-  $now_datetime = new DateTime()->format('Y-m-d H:i:s');
-  $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
-  if ($now_datetime > $target_datetime){
-    print "TRIAL FINISHED";
-    $close_flag = pg_close($link);
-    exit();
-  }
-}
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
