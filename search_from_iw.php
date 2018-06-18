@@ -13,6 +13,7 @@ $in_section = "";
 $data = pg_escape_string($_POST['items']);
 $search_mode = pg_escape_string($_POST['search_mode']);
 $trial_flg = $_POST['trial_flg'];
+/*
 print $trial_flg;
 if ($trial_flg == "1") {
   print "TRIAL MODE";
@@ -24,6 +25,7 @@ if ($trial_flg == "1") {
     exit();
   }
 }
+*/
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
