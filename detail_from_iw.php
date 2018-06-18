@@ -12,6 +12,16 @@ if (!$link) {
 
 $recipe_seq = pg_escape_string($_POST['recipe_seq']);
 $recipe_name = pg_escape_string($_POST['recipe_name']);
+$trial_flg = $_POST['trial_flg'];
+if ($trial_flg == "1") {
+  // トライアル版アクセスの場合
+  $today = date("Y/m/d");
+  $target_day = "2018/06/18";
+  if(strtotime($today) > strtotime($target_day)){
+    print "TRIAL FINISHED";
+    die('');
+  }
+}
 // print "SEQ:" . $recipe_seq . "\n";
 // レシピ詳細をクエリ
 if ($recipe_name != "") {

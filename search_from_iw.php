@@ -12,6 +12,16 @@ if (!$link) {
 $in_section = "";
 $data = pg_escape_string($_POST['items']);
 $search_mode = pg_escape_string($_POST['search_mode']);
+$trial_flg = $_POST['trial_flg'];
+if ($trial_flg == "1") {
+  // トライアル版アクセスの場合
+  $today = date("Y/m/d");
+  $target_day = "2018/06/18";
+  if(strtotime($today) > strtotime($target_day)){
+    print "TRIAL FINISHED";
+    die('');
+  }
+}
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
