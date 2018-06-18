@@ -6,7 +6,7 @@ $trial_flg = $_POST['trial'];
 if ($trial_flg == "1") {
   // トライアル版アクセスの場合
   $now_datetime = new DateTime();
-  $target_datetime = new DateTime('2018-06-19 0:15:00');
+  $target_datetime = new DateTime('2018-06-23 23:59:59');
   if ($now_datetime->format('Y-m-d H:i:s') > $target_datetime->format('Y-m-d H:i:s')){
     print "TRIAL FINISHED";
     die('');
