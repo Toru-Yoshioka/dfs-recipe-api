@@ -118,7 +118,7 @@ ORDER BY
   drm.recipe_name_en ASC
 ';
 }
-
+print "■" . $query . "■";
 } else {
   // チャット検索
   if (intVal($search_mode) == 2) {
@@ -174,7 +174,6 @@ ORDER BY
 ';
   }
 }
-print "■" . $query . "■";
 $result = pg_query($query);
 if (!$result) {
   die('クエリーが失敗しました。'.pg_last_error());
