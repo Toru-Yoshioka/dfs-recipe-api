@@ -15,8 +15,8 @@ $search_mode = pg_escape_string($_POST['search_mode']);
 $trial_flg = $_POST['trial_flg'];
 if ($trial_flg == "1") {
   // トライアル版アクセスの場合
-  $now_datetime = new DateTime();
-  $target_datetime = new DateTime('2018-06-18 23:42');
+  $now_datetime = new DateTime()->format('Y-m-d H:i:s');
+  $target_datetime = new DateTime('2018-06-18 23:48:00')->format('Y-m-d H:i:s');
   if ($now_datetime > $target_datetime){
     print "TRIAL FINISHED";
     die('');
