@@ -18,7 +18,8 @@ if ($trial_flg == "1") {
   $now_datetime = new DateTime()->format('Y-m-d H:i:s');
   $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
   if ($now_datetime > $target_datetime){
-    die('TRIAL FINISHED');
+    print "TRIAL FINISHED";
+    exit();
   }
 }
 // キーワードありなし
