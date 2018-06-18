@@ -10,8 +10,8 @@ if (!$link) {
 
 // print "--- REQUEST IW TEST ---\n";
 
-$recipe_seq = $_POST['recipe_seq'];
-$recipe_name = $_POST['recipe_name'];
+$recipe_seq = pg_escape_string($_POST['recipe_seq']);
+$recipe_name = pg_escape_string($_POST['recipe_name']);
 // print "SEQ:" . $recipe_seq . "\n";
 // レシピ詳細をクエリ
 if ($recipe_name != "") {

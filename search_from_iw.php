@@ -10,8 +10,8 @@ if (!$link) {
 
 // print "--- REQUEST IW TEST ---\n";
 $in_section = "";
-$data = $_POST['items'];
-$search_mode = $_POST['search_mode'];
+$data = pg_escape_string($_POST['items']);
+$search_mode = pg_escape_string($_POST['search_mode']);
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
