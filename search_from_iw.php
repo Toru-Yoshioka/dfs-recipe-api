@@ -3,7 +3,7 @@
 date_default_timezone_set('Asia/Tokyo');
 // トライアル判定
 $trial_flg = $_POST['trial_flg'];
-print $trial_flg;
+print "■" . $trial_flg . "■";
 if ($trial_flg == "1") {
   print "TRIAL MODE";
   // トライアル版アクセスの場合
