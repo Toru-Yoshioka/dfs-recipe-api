@@ -1,6 +1,17 @@
 <?php header("content-type: text/plain; charset=utf-8"); ?>
 <?php
 date_default_timezone_set('Asia/Tokyo');
+// トライアル判定
+$trial_flg = $_POST['trial'];
+if ($trial_flg == "1") {
+  // トライアル版アクセスの場合
+  $now_datetime = new DateTime();
+  $target_datetime = new DateTime('2018-06-19 0:15:00');
+  if ($now_datetime->format('Y-m-d H:i:s') > $target_datetime->format('Y-m-d H:i:s')){
+    print "TRIAL FINISHED";
+    die('');
+  }
+}
 $conn = "host=ec2-23-23-248-192.compute-1.amazonaws.com dbname=dl8app8ukml19 user=zukuhaourmbbsk password=f9e66d533b3f6cdae3d67c88e7baac7bc05f380fcaf047471e726d3b332ef74a";
 $link = pg_connect($conn);
 if (!$link) {
@@ -12,15 +23,6 @@ if (!$link) {
 
 $recipe_seq = pg_escape_string($_POST['recipe_seq']);
 $recipe_name = pg_escape_string($_POST['recipe_name']);
-$trial_flg = $_POST['trial_flg'];
-if ($trial_flg == "1") {
-  // トライアル版アクセスの場合
-  $now_datetime = new DateTime()->format('Y-m-d H:i:s');
-  $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
-  if ($now_datetime > $target_datetime){
-    die('TRIAL FINISHED');
-  }
-}
 // print "SEQ:" . $recipe_seq . "\n";
 // レシピ詳細をクエリ
 if ($recipe_name != "") {
