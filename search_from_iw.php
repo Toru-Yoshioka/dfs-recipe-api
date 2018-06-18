@@ -13,7 +13,9 @@ $in_section = "";
 $data = pg_escape_string($_POST['items']);
 $search_mode = pg_escape_string($_POST['search_mode']);
 $trial_flg = $_POST['trial_flg'];
+print $trial_flg;
 if ($trial_flg == "1") {
+  print "TRIAL MODE";
   // トライアル版アクセスの場合
   $now_datetime = new DateTime()->format('Y-m-d H:i:s');
   $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
