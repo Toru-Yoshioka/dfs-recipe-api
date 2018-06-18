@@ -21,10 +21,10 @@ if ($trial_flg == "1") {
   $target_datetime = new DateTime('2018-06-18 23:53:00')->format('Y-m-d H:i:s');
   if ($now_datetime > $target_datetime){
     print "TRIAL FINISHED";
+    $close_flag = pg_close($link);
     exit();
   }
 }
-exit();
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
