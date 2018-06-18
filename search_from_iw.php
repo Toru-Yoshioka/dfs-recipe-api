@@ -24,6 +24,7 @@ if ($trial_flg == "1") {
     exit();
   }
 }
+exit();
 // キーワードありなし
 if (strlen($data) <= 0) {
   die('');
