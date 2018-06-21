@@ -187,22 +187,22 @@ INSERT INTO
   // 調理時間
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
-    print "<div clas=\"border_inside\">調理時間：" . $match[1] . "</div><br/>\n";
+    //print "<div clas=\"border_inside\">調理時間：" . $match[1] . "</div><br/>\n";
     // 調理時間
     $cooking_time_array = explode(':', $match[1]);
     // 調理時間演算
     $formated_seconds = (intVal($cooking_time_array[0]) * 360) + (intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
-    print "<div clas=\"border_inside\">調理時間(計算結果)：" . $formated_seconds . "</div><br/>\n";
+    //print "<div clas=\"border_inside\">調理時間(計算結果)：" . $formated_seconds . "</div><br/>\n";
     continue;
   }
   // USES EP XP
-  preg_match('/^([0-9]+) Uses? \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
+  preg_match('/^([0-9]+)[ ]+Uses?[ ]+\-[ ]+([0-9]+)[ ]+EP\/use[ ]+\-[ ]+([0-9]+)[ ]+XP<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
-    print "<div clas=\"border_inside\">USES/EP/XP：" . $match[1] . "</div><br/>\n";
+    //print "<div clas=\"border_inside\">USES/EP/XP：" . $match[1] . "</div><br/>\n";
     $deliverable_uses = $match[1];
     $deliverable_energy = $match[2];
     $experience_point = $match[3];
-    print "<div clas=\"border_inside\">USES/EP/XP(整形結果)：" . $deliverable_uses . " / " . $deliverable_energy . " / " . $experience_point . "</div><br/>\n";
+    //print "<div clas=\"border_inside\">USES/EP/XP(整形結果)：" . $deliverable_uses . " / " . $deliverable_energy . " / " . $experience_point . "</div><br/>\n";
     continue;
   }
   // 公開終了日
