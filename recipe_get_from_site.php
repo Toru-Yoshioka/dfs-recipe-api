@@ -84,7 +84,7 @@ foreach ($array as $line) {
   // レシピ名
   preg_match('/<strong class=\'name\'>([^<]+)<\/strong>/', $line, $match);
   if (strlen($match[1]) > 0) {
-    print "レシピ名：" . $match[1] . "\n";
+    print "<div clas=\"border_inside\">レシピ名：" . $match[1] . "</div><br/>\n";
     // レシピ名
     $recipe_name_en = $match[1];
     continue;
@@ -187,11 +187,12 @@ INSERT INTO
   // 調理時間
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
-    print "調理時間：" . $match[1] . "\n";
+    print "<div clas=\"border_inside\">調理時間：" . $match[1] . "</div><br/>\n";
     // 調理時間
     $cooking_time_array = explode(':', $match[1]);
     // 調理時間演算
     $formated_seconds = (intVal($cooking_time_array[0]) * 360) + (intVal($cooking_time_array[1]) * 60) + intVal($cooking_time_array[2]);
+    print "<div clas=\"border_inside\">調理時間(計算結果)：" . $formated_seconds . "</div><br/>\n";
     continue;
   }
   // USES EP XP
