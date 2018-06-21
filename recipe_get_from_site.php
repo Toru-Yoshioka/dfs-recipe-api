@@ -198,9 +198,11 @@ INSERT INTO
   // USES EP XP
   preg_match('/^([0-9]+) Uses? \- ([0-9]+) EP\/use \- ([0-9]+) XP<br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
+    print "<div clas=\"border_inside\">USES/EP/XP：" . $match[1] . "</div><br/>\n";
     $deliverable_uses = $match[1];
     $deliverable_energy = $match[2];
     $experience_point = $match[3];
+    print "<div clas=\"border_inside\">USES/EP/XP(整形結果)：" . $deliverable_uses . " / " . $deliverable_energy . " / " . $experience_point . "</div><br/>\n";
     continue;
   }
   // 公開終了日
