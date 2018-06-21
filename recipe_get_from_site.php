@@ -84,6 +84,7 @@ foreach ($array as $line) {
   // レシピ名
   preg_match('/<strong class=\'name\'>([^<]+)<\/strong>/', $line, $match);
   if (strlen($match[1]) > 0) {
+    print "レシピ名：" . $match[1] . "\n";
     // レシピ名
     $recipe_name_en = $match[1];
     continue;
@@ -186,6 +187,7 @@ INSERT INTO
   // 調理時間
   preg_match('/^Time : ([0-9]+:[0-9]+:[0-9]+): <br\/>/', $line, $match);
   if (strlen($match[1]) > 0) {
+    print "調理時間：" . $match[1] . "\n";
     // 調理時間
     $cooking_time_array = explode(':', $match[1]);
     // 調理時間演算
