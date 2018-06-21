@@ -40,31 +40,31 @@ $init_result = pg_query('
 DELETE FROM dfs_recipe_mst;
 ');
 if (!$init_result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリー(DEL1)が失敗しました。'.pg_last_error());
 }
 $init_result = pg_query('
 DELETE FROM dfs_foodstuff_mst;
 ');
 if (!$init_result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリー(DEL2)が失敗しました。'.pg_last_error());
 }
 $init_result = pg_query('
 DELETE FROM dfs_recipe_foodstuff_join;
 ');
 if (!$init_result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリーが(DEL3)失敗しました。'.pg_last_error());
 }
 $init_result = pg_query('
 select setval (\'dfs_recipe_seq\', 1, false);
 ');
 if (!$init_result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリー(SEQ1)が失敗しました。'.pg_last_error());
 }
 $init_result = pg_query('
 select setval (\'dfs_foodstuff_seq\', 1, false);
 ');
 if (!$init_result) {
-  die('クエリーが失敗しました。'.pg_last_error());
+  die('クエリーが(SEQ2)失敗しました。'.pg_last_error());
 }
 
 $url = "https://www.digitalfarmsystem.com/dfs-recipes/";
@@ -105,7 +105,7 @@ WHERE
  dcm.cookware_name_en = \'' . $cookware_name . '\'
 ');
     if (!$cookware_result) {
-      die('クエリーが失敗しました。'.pg_last_error());
+      die('クエリー(調理器具)が失敗しました。'.pg_last_error());
     }
     if (pg_num_rows($cookware_result) > 0) {
       // 調理器具が登録済みだったらシーケンス取得
@@ -136,7 +136,7 @@ WHERE
  dfm.foodstuff_name_en = \'' . $foodstuff_name . '\'
 ');
     if (!$foodstuff_result) {
-      die('クエリーが失敗しました。'.pg_last_error());
+      die('クエリー(スロット食材)が失敗しました。'.pg_last_error());
     }
     if (pg_num_rows($foodstuff_result) > 0) {
       // 食材が登録済みだったらシーケンス取得
@@ -149,7 +149,7 @@ WHERE
 SELECT nextval(\'dfs_foodstuff_seq\') AS next_foodstuff_seq
 ');
       if (!$foodstuff_seq_result) {
-        die('クエリーが失敗しました。'.pg_last_error());
+        die('クエリー(食材SEQ)が失敗しました。'.pg_last_error());
       }
       $rows = pg_fetch_array($foodstuff_seq_result, NULL, PGSQL_ASSOC);
       $next_foodstuff_seq = $rows['next_foodstuff_seq'];
@@ -176,7 +176,7 @@ INSERT INTO
  )
 ');
       if (!$new_foodstuff_result) {
-        die('クエリーが失敗しました。'.pg_last_error());
+        die('クエリー(食材INSERT)が失敗しました。'.pg_last_error());
       }
       // 配列登録
       $resipe_foodstuff_join_array[intVal($slot_no)] = $next_foodstuff_seq;
@@ -219,7 +219,7 @@ INSERT INTO
 SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
 ');
     if (!$recipe_seq_result) {
-      die('クエリーが失敗しました。'.pg_last_error());
+      die('クエリー(レシピSEQ)が失敗しました。'.pg_last_error());
     }
     $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
     $next_recipe_seq = $rows['next_recipe_seq'];
@@ -254,7 +254,7 @@ INSERT INTO
  )
 ');
     if (!$result) {
-      die('クエリーが失敗しました。'.pg_last_error());
+      die('クエリー(レシピINSERT)が失敗しました。'.pg_last_error());
     }
     // 食材紐づけ登録
     for ($i = 1 ; $i < 10 ; $i++){
@@ -281,7 +281,7 @@ INSERT INTO
  )
 ');
       if (!$result) {
-        die('クエリーが失敗しました。'.pg_last_error());
+        die('クエリー(レシピ食材JOIN)が失敗しました。'.pg_last_error());
       }
     }
     // 再初期化
