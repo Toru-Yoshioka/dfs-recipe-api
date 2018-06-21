@@ -224,7 +224,7 @@ SELECT nextval(\'dfs_recipe_seq\') AS next_recipe_seq
     $rows = pg_fetch_array($recipe_seq_result, NULL, PGSQL_ASSOC);
     $next_recipe_seq = $rows['next_recipe_seq'];
     // レシピマスタ登録
-    $result = pg_query('
+    $query = '
 INSERT INTO
   dfs_recipe_mst
   (
@@ -252,8 +252,10 @@ INSERT INTO
   current_timestamp,
   current_timestamp
  )
-');
+';
+    $result = pg_query($query);
     if (!$result) {
+      print $query;
       die('クエリー(レシピINSERT)が失敗しました。'.pg_last_error());
     }
     // 食材紐づけ登録
