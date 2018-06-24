@@ -103,8 +103,24 @@ ORDER BY
         <td>
           <a href="javascript:void(0);" onclick="javascript:document.getElementById('<?php print($cookware_name_en); ?>').submit();"><?php print($cookware_name_en); ?></a>
         </td>
-        <td><img alt="<?php print($icon_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $icon_uuid . "/2"); ?>"/></td>
-        <td><img alt="<?php print($pict_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $pict_uuid . "/2"); ?>"/></td>
+        <td>
+<?php
+  if ($icon_uuid != "") {
+?>
+          <img alt="<?php print($icon_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $icon_uuid . "/2"); ?>"/>
+<?php
+  }
+?>
+        </td>
+        <td>
+<?php
+  if ($pict_uuid != "") {
+?>
+          <img alt="<?php print($pict_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $pict_uuid . "/2"); ?>"/>
+<?php
+  }
+?>
+        </td>
         <td><?php print($update_date); ?></td>
         <td><?php print($regist_date); ?></td>
         <form id="<?php print($cookware_name_en); ?>" method="post" action="./cookware_uuid_form.php">
