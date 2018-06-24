@@ -89,8 +89,8 @@ ORDER BY
         <td>
           <a href="javascript:void(0);" onclick="javascript:document.getElementById('<?php print($cookware_name_en); ?>').submit();"><?php print($cookware_name_en); ?></a>
         </td>
-        <td><?php print($icon_uuid); ?></td>
-        <td><?php print($pict_uuid); ?></td>
+        <td><img alt="<?php print($icon_uuid); ?>" src="<?php print("http://secondlife.com/app/image/" . $icon_uuid . "/2"); ?>"/></td>
+        <td><img alt="<?php print($pict_uuid); ?>" src="<?php print("http://secondlife.com/app/image/" . $pict_uuid . "/2"); ?>"/></td>
         <td><?php print($update_date); ?></td>
         <td><?php print($regist_date); ?></td>
         <form id="<?php print($cookware_name_en); ?>" method="post" action="./cookware_uuid_form.php">
