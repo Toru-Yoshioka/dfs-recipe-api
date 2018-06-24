@@ -61,8 +61,22 @@ ORDER BY
       <?php print($selected_name); ?>
       <input name="DST_NAME" type="hidden" value="<?php print($selected_name); ?>"/><br/><br/>      
       アイコンUUID：<br/>
+<?php
+  if ($selected_icon_uuid != "") {
+?>
+      <img alt="<?php print($selected_icon_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $selected_icon_uuid . "/2"); ?>"/><br/>
+<?php
+  }
+?>
       <input type="text" name="ICON_UUID" size="40" value="<?php print($selected_icon_uuid); ?>"/><br/>      
       写真UUID：<br/>
+<?php
+  if ($selected_pict_uuid != "") {
+?>
+      <img alt="<?php print($selected_pict_uuid); ?>" style="width: 256px; height: 256px;" src="<?php print("http://secondlife.com/app/image/" . $selected_pict_uuid . "/2"); ?>"/><br/>
+<?php
+  }
+?>
       <input type="text" name="PICT_UUID" size="40" value="<?php print($selected_pict_uuid); ?>"/><br/>      
       <br/>
       <br/>
