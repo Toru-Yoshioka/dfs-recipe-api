@@ -84,7 +84,7 @@ SELECT
   vrwn.update_date,
   vrwn.regist_date
 FROM
-  view_recipe_with_name vrwn
+  view_recipe_with_name_v2 vrwn
 WHERE
 ' . $search_key
 );
